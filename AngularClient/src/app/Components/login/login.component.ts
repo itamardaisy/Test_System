@@ -9,25 +9,17 @@ import { LoginModel } from 'src/app/Models/LoginModel';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
   public LoginModel = new LoginModel();
 
-  constructor(
-    private loginService: LoginService,
-    private formBuilder: FormBuilder) {}
+  constructor(private loginService: LoginService) {}
 
-  ngOnInit() {
-    this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
-    });
-  }
+  ngOnInit() {}
 
   public onSubmit(): void {
     const observable = this.loginService.login(this.LoginModel);
     observable.subscribe(user => {
       if (user != null) {
-        // Route to Home page.
+        console.log(user);
       } else {
         // Send a message on the login fail.
       }}, error => {

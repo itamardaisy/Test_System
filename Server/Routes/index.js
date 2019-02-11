@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 
-const tests = require('./routes/login');
+const tests = require('./Routes/Admin/index');
 const language = require('./routes/languages');
 const questions = require('./routes/questions');
 const auth = require('./routes/auth');

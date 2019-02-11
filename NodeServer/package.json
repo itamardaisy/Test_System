@@ -1,0 +1,12 @@
+{
+  "name": "nodeserver",
+  "version": "1.0.0",
+  "description": "Testing system server",
+  "main": "index.js",
+  "scripts": {},
+  "author": "Itamar",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5"
+  }
+}
