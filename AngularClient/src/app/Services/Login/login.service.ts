@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AdminUser } from 'src/app/Models/AdminUser';
+import { Admin } from 'src/app/Models/AdminUser';
 import { LoginModel } from 'src/app/Models/LoginModel';
 
 @Injectable({
@@ -10,7 +10,7 @@ import { LoginModel } from 'src/app/Models/LoginModel';
 export class LoginService {
 
   constructor(private http: HttpClient  ) { }
-  public login(loginModel: LoginModel): Observable<AdminUser> {
-    return this.http.post<AdminUser>('http://localhost:8080/Login', loginModel);
+  public login(loginModel: LoginModel): Observable<Admin> {
+    return this.http.post<Admin>('http://localhost:8080/Login', loginModel);
   }
 }
