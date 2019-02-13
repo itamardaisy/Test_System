@@ -3,7 +3,7 @@ const app = express();
 const cors = require('cors');
 
 const admin = require('./Routes/Admin/index');
-const test = require('./Routes/Test/index')
+// const test = require('./Routes/Test/index')
 
 // Middlewares
 app.use(cors());
