@@ -5,7 +5,7 @@ const cors = require('cors');
 const admin = require('./Routes/Admin/index');
 const test = require('./Routes/Test/index')
 
-// middlewares
+// Middlewares
 app.use(cors());
 app.use(express.json());
 
