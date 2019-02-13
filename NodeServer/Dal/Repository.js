@@ -10,8 +10,8 @@ const dbPool = new sql.ConnectionPool(config, err => {
 class DBContext {
     WriteInDb(procedureName, sqlParams, callback) {
         var req = dbPool.request();
-        sqlParams.forEach(e => {
-            req.input(e.paramName, e.sqlType, e.value);
+        sqlParams.forEach(p => {
+            req.input(p.paramName, p.sqlType, p.value);
         });
         req.execute(procedureName, (err, data) => {
             if (err) {

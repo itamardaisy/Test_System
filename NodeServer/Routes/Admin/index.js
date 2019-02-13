@@ -10,8 +10,8 @@ router.post('/Login', (req, res) => {
     const password = req.body.password;
     let p = new sqlP.SqlParmaeter();
     if (email && password) {
-        let params = [new sqlP.SqlParmaeter('email', sql.VarChar(50), email),
-                      new sqlP.SqlParmaeter('password', sql.VarChar(50), password)]
+        let params = [p.getAsSQLParameter('email', sql.VarChar(50), email),
+                      p.getAsSQLParameter('password', sql.VarChar(50), password)]
         repo.WriteInDb('sp_login', params, user => {
             console.log(user);
             res.send(user).status(200);
@@ -24,5 +24,9 @@ router.post('/Login', (req, res) => {
     else {
         res.status(400).send('missing username or password');
     }
+});
+
+router.post('/Logout', (req, res) => {
+   const email = req.body.email;
 });
 module.exports = router;
