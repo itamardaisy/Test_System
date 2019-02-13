@@ -1,15 +1,14 @@
 var express = require('express')
-var app = express()
+const router = express.Router();
 
-
-const loginProc = require('../Dal/Login/loginProcedure')
-
-router.get('/Login', (req, res) => {
-   const email = req.query.email;
+const AuthProcedure = require('../../Dal/Auth/AuthProcedure')
+router.post('/Login', (req, res) => {
+   const email = req.body.email;
    const password = req.body.password;
    if (email && password) {
-      let user = loginProc.login(email, password);
+      let user = AuthProcedure.login(email, password);
       console.log(user);
+      res.send(user).status(200);
    }
    else {
       res.status(400).send('missing username or password');
