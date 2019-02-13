@@ -24,20 +24,3 @@ class DBContext {
     };
 }
 module.exports = new DBContext();
-
-
-
-    // executeInDB(callback) {
-    //     var req = dbPool.request();
-    //     req.input("email", sql.VarChar(50), "b@b.a");
-    //     req.input("password", sql.VarChar(50), "123");
-
-    //     req.execute("spCreateAdmin", (err, data) => {
-    //         if (err) {
-    //             console.log("error", err);
-    //         }
-    //         else {
-    //             callback(data.recordset);
-    //         }
-    //     });
-    // }

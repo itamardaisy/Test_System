@@ -6,5 +6,4 @@ var sqlParameter = class SqlParmaeter {
         this.value = value;
    } 
 }
-
 module.exports.SqlParmaeter = sqlParameter;

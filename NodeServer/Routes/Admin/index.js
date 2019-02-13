@@ -25,6 +25,4 @@ router.post('/Login', (req, res) => {
         res.status(400).send('missing username or password');
     }
 });
-
-router.post('/login', ())
 module.exports = router;
