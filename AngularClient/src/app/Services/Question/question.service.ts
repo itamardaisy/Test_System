@@ -8,10 +8,7 @@ import { QuestionEdit } from 'src/app/Models/QuestionEdit';
 })
 export class QuestionService {
 
-  constructor(
-    private http: HttpClient
-  ) { }
-
+  constructor(private http: HttpClient) { }
   public getQuestionEdit(): Observable<QuestionEdit[]> {
     return this.http.get<QuestionEdit[]>('http://localhost:8080/getQuestionEdit');
   }

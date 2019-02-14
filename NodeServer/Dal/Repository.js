@@ -8,15 +8,16 @@ const dbPool = new sql.ConnectionPool(config, err => {
 });
 
 class DBContext {
+
+    // This function is to execute a given procedure. 
     excecuteProcedureDB(procedureName, sqlParams, callBack) {
-        console.log('Hello from dbContex');
         var req = dbPool.request();
         sqlParams.forEach(p => {
             req.input(p.paramName, p.sqlType, p.value);
         });
         req.execute(procedureName, (err, data) => {
             if (err) {
-                console.log("error --> ", err);
+                console.log("error --> " + err);
             }
             else {
                 return callBack(data.recordsets);
@@ -24,8 +25,19 @@ class DBContext {
         });
     }
 
+    // This function is to execute a given query.
     excecuteQueryDB(query, sqlParams, callBack) {
-        
+        var req = dbPool.request();
+        sqlParams.forEach(p => {
+            req.input(p.paramName, p.sqlType, p.value);
+        });
+        req.query(query, (err, data) => {
+            if (err) {
+                console.log('error --> ' + err);
+            } else {
+                return callBack(data.recordsets);
+            }
+        });
     }
 }
 module.exports = new DBContext();

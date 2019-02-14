@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { LoginService } from 'src/app/services/Login/login.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginModel } from 'src/app/Models/LoginModel';
 
 @Component({

@@ -11,6 +11,6 @@ export class LoginService {
 
   constructor(private http: HttpClient  ) { }
   public login(loginModel: LoginModel): Observable<Admin> {
-    return this.http.post<Admin>('http://localhost:8080/Login', loginModel);
+    return this.http.post<Admin>('http://localhost:8080/admin/Login', loginModel);
   }
 }

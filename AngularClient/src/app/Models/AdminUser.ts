@@ -1,5 +1,3 @@
-import { UUID } from 'angular2-uuid';
-
 export class Admin {
     Id: number;
     Username: string;
@@ -7,5 +5,4 @@ export class Admin {
     Password: string;
     PhoneNumber: string;
     IsActive: boolean;
-    Token = UUID.UUID();
 }
