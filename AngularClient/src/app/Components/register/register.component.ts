@@ -10,7 +10,6 @@ import { RegisterService } from 'src/app/Services/Register/register.service';
 export class RegisterComponent implements OnInit {
     public newAdmin = new Admin();
     constructor(private registerService: RegisterService) { }
-
     ngOnInit() { }
 
     onSubmit() {
