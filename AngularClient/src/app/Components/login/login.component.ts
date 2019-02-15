@@ -3,29 +3,30 @@ import { LoginService } from 'src/app/services/Login/login.service';
 import { LoginModel } from 'src/app/Models/LoginModel';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  public LoginModel = new LoginModel();
+    public LoginModel = new LoginModel();
 
-  constructor(private loginService: LoginService) {}
+    constructor(private loginService: LoginService) { }
 
-  ngOnInit() {}
+    ngOnInit() { }
 
-  public onSubmit(): void {
-    const observable = this.loginService.login(this.LoginModel);
-    observable.subscribe(user => {
-      if (user != null) {
-        console.log(user);
-      } else {
-        // Send a message on the login fail.
-      }}, error => {
-        console.log(error);
-      }, () => {
-        console.log('Done');
-      }
-    );
-  }
+    public onSubmit(): void {
+        const observable = this.loginService.login(this.LoginModel);
+        observable.subscribe(user => {
+            if (user != null) {
+                console.log(user);
+            } else {
+                // Send a message on the login fail.
+            }
+        }, error => {
+            console.log(error);
+        }, () => {
+            console.log('Done');
+        }
+        );
+    }
 }

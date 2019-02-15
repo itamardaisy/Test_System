@@ -12,7 +12,7 @@ class RegisterValidation {
             return true;
         } else {
             return false;
-        }        
+        }
     }
 
     checkPhoneNumberValidation(phoneNumber) {

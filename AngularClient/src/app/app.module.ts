@@ -13,32 +13,32 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
-  { path: 'Login', component: LoginComponent },
-  { path: 'Register', component: RegisterComponent },
-  { path: 'QuestionManager', component: QuestionManagerComponent },
-  { path: 'Login', component: LoginComponent },
+    { path: 'Login', component: LoginComponent },
+    { path: 'Register', component: RegisterComponent },
+    { path: 'QuestionManager', component: QuestionManagerComponent },
+    { path: 'Login', component: LoginComponent },
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    LoginComponent,
-    RegisterComponent,
-    QuestionManagerComponent,
-    NavbarComponent
-  ],
-  imports: [
-    FormsModule,
-    BrowserModule,
-    HttpClientModule,
-    MatTableModule,
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true }
-    )
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        LoginComponent,
+        RegisterComponent,
+        QuestionManagerComponent,
+        NavbarComponent
+    ],
+    imports: [
+        FormsModule,
+        BrowserModule,
+        HttpClientModule,
+        MatTableModule,
+        RouterModule.forRoot(
+            appRoutes,
+            { enableTracing: true }
+        )
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

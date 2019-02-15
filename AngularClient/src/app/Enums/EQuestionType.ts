@@ -1,4 +1,4 @@
 export enum EQuestionType {
-        Single = 1,
-        Multiple = 2
+    Single = 1,
+    Multiple = 2
 }
