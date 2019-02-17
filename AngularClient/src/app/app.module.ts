@@ -29,8 +29,8 @@ const appRoutes: Routes = [
         NavbarComponent
     ],
     imports: [
-        FormsModule,
         BrowserModule,
+        FormsModule,
         HttpClientModule,
         MatTableModule,
         RouterModule.forRoot(

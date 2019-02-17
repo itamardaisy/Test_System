@@ -6,31 +6,31 @@
                     <h3 class="panel-title"> Register </h3>
                 </div>
                 <div class="panel-body">
-                    <form (ngSubmit)='onSubmit()' role="form" style="display: block;">
+                    <form (ngSubmit)='onSubmit()' #registerForm="ngForm" role="form" style="display: block;">
                         <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <input [(ngModel)]="newAdmin.Username" [ngModelOptions]="{standalone: true}" type="text" id="username" class="form-control input-sm" placeholder="Username">
+                                    <input [(ngModel)]="newAdmin.Username" [ngModelOptions]="{standalone: true}" type="text" class="form-control input-sm" placeholder="Username" required>
                                 </div>
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <input [(ngModel)]="newAdmin.PhoneNumber" [ngModelOptions]="{standalone: true}" type="text" id="phoneNumber" class="form-control input-sm" placeholder="Phone Number">
+                                    <input [(ngModel)]="newAdmin.PhoneNumber" [ngModelOptions]="{standalone: true}" type="text" class="form-control input-sm" placeholder="Phone Number" required>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <input [(ngModel)]="newAdmin.Email" [ngModelOptions]="{standalone: true}" type="email" id="email" class="form-control input-sm" placeholder="Email Address">
+                            <input [(ngModel)]="newAdmin.Email" [ngModelOptions]="{standalone: true}" type="email" class="form-control input-sm" placeholder="Email Address" required>
                         </div>
                         <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <input [(ngModel)]="newAdmin.Password" [ngModelOptions]="{standalone: true}" type="password" id="password" class="form-control input-sm" placeholder="Password">
+                                    <input [(ngModel)]="newAdmin.Password" [ngModelOptions]="{standalone: true}" type="password" id="password" class="form-control input-sm" placeholder="Password" required>
                                 </div>
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <input type="password" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password">
+                                    <input type="password" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password" required>
                                     <span id='message'></span>
                                 </div>
                             </div>
