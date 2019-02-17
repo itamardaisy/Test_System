@@ -28,8 +28,7 @@ class RegisterValidation {
         bcrypt.hash(password, 'E1F53135E559C253' ,(err, hash) => {
             if (!err) {
                 let query = `SELECT Password FROM [Admin] WHERE Password = ${hash}`;
-                let params = [new sqlP('Username', sql.VarChar(50), hash)];
-                repo.excecuteQueryDB(query, params, data => {
+                repo.excecuteQueryDB(query, data => {
                     return (data !== hash) ? true : false;
                 });
             } else {
@@ -45,9 +44,8 @@ class RegisterValidation {
 
     // Checks wether the username is exist in the database or not.
     checkIfUsernameNotExist(username) {
-        let query = `SELECT Username FROM [Admin] WHERE Username = ${username}`;
-        let params = [new sqlP('Username', sql.VarChar(50), username)];
-        repo.excecuteQueryDB(query, params, data => {
+        let query = `SELECT Username FROM [Admin] WHERE Username = '${username}'`;
+        repo.excecuteQueryDB(query, data => {
             return (data !== username) ? true : false;
         });
     }
