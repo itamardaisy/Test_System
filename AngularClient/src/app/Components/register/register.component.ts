@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
     ngOnInit() { }
 
     onSubmit() {
+        debugger;
         const observable = this.registerService.register(this.newAdmin);
         console.log(this.newAdmin.Email);
         observable.subscribe(admin => {
