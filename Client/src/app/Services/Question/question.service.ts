@@ -10,6 +10,6 @@ export class QuestionService {
 
     constructor(private http: HttpClient) { }
     public getQuestionEdit(): Observable<QuestionEdit[]> {
-        return this.http.get<QuestionEdit[]>('http://localhost:8080/getQuestionEdit');
+        return this.http.get<QuestionEdit[]>('http://localhost:5122/getQuestionEdit');
     }
 }

@@ -27,11 +27,13 @@ class DBContext {
 
     // This function is to execute a given query.
     excecuteQueryDB(query, callBack) {
+        console.log(query);
         var req = dbPool.request();
         req.query(query, (err, data) => {
             if (err) {
                 console.log('error --> ' + err);
             } else {
+                console.log(data);
                 return callBack(data.recordsets);
             }
         });

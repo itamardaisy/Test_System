@@ -11,5 +11,5 @@ app.use(express.json());
 
 app.use('/admin', admin) // Admin Routes
 
-const port = process.env.PORT || 4201;
+const port = process.env.PORT || 5122;
 app.listen(port, () => console.log(`Listening on port ${port} ⚡`));

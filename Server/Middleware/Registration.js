@@ -21,7 +21,7 @@ class RegisterValidation {
     }
 
     checkPasswordValidation(password) {
-        return (String(password).length <= 8 && this.checkIfUsernameNotExist(username)) ? true : false;
+        return (this.checkIfPasswordNotExist(password)) ? true : false;
     }
 
     checkIfPasswordNotExist(password) {
@@ -39,19 +39,20 @@ class RegisterValidation {
 
     // The main checker of the username input.
     checkUsernameValidation(username) {
-        return (String(username).length <= 8 && this.checkIfUsernameNotExist(username)) ? true : false;
+        return (this.checkIfUsernameNotExist(username)) ? true : false;
     }
 
     // Checks wether the username is exist in the database or not.
     checkIfUsernameNotExist(username) {
         let query = `SELECT Username FROM [Admin] WHERE Username = '${username}'`;
         repo.excecuteQueryDB(query, data => {
+            console.log(data);
             return (data !== username) ? true : false;
         });
     }
 
     checkEmailValidation(email) {
-        return (validateEmail(email) && this.checkIfUsernameNotExist(email)) ? true : false;
+        return (validateEmail(email) && this.checkIfEmailNotExist(email)) ? true : false;
     }
 
     validateEmail(email) {
