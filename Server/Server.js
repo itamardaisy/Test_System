@@ -9,6 +9,10 @@ const test = require('./Routes/Test/index')
 app.use(cors());
 app.use(express.json());
 
+app.get('/', (req, res) => {
+    res.status(200).json({ message: 'Connected!' });
+  });
+  
 app.use('/admin', admin) // Admin Routes
 app.use('/test', test);  // Test Routes
 
