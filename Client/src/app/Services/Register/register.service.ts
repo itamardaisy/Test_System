@@ -10,6 +10,6 @@ export class RegisterService {
 
     constructor(private http: HttpClient) { }
     public register(newAdmin: Admin): Observable<Admin> {
-        return this.http.post<Admin>('http://localhost:5122/admin/Register', newAdmin);
+        return this.http.post<Admin>(`http://localhost:5221/admin/register`, newAdmin);
     }
 }
