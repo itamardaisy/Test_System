@@ -9,11 +9,10 @@ AS
 BEGIN
 	SET NOCOUNT ON;
 
-	SELECT q.Content and q.Tags
+	SELECT q.Content, q.Tags
 	FROM [dbo].[Question] AS q
 	WHERE Id = ( SELECT qtt.[QuestionId]
-				 FROM [dbo].[QuestionToTest] as qtt
+				 FROM [dbo].[QuestionToTest] AS qtt
 				 WHERE TestId = @TestId )
-	VALUES(TestId)
 END
 GO
