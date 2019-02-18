@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/admin', admin) // Admin Routes
-app.use('/test', test);
+app.use('/test', test);  // Test Routes
 
 const port = process.env.PORT || 5122;
 app.listen(port, () => console.log(`Listening on port ${port} ⚡`));
