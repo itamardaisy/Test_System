@@ -4,6 +4,7 @@ const repo = require('../../Dal/Repository');
 const sqlP = require('../../Models/SqlParameter');
 const sql = require('mssql');
 const Admin = require('../../Models/Admin');
+const statusCodes = require('../../Models/ErrorCodesEnum');
 
 // Middleware usege:
 const authValidate = require('../../Middleware/Authentication');
@@ -64,15 +65,15 @@ router.post('/register', (req, res) => {
                       new sqlP('Password', sql.VarChar(50), password),
                       new sqlP('PhoneNumber', sql.VarChar(50), phoneNumber)];
         repo.excecuteProcedureDB('spRegisterAdmin', params, response => {
-            if (response == false) {
-                res.status(200).send('Username is already exist.');
+            if (response === false) {
+                res.status(400).send(statusCodes.usernameExist);
             } else {
-                res.status(200).send('New Admin has registered.');
+                res.status(200).send(statusCodes.success);
             }
         });
     } catch (err) {
         console.log('Error --> ' + err);
-        res.status(400).send('Something went wrong.');
+        res.status(400).send(statusCodes.unspecifiedError);
     }
 });
 module.exports = router;

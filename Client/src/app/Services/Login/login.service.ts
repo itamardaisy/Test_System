@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Admin } from 'src/app/Models/AdminUser';
 import { LoginModel } from 'src/app/Models/LoginModel';
+import { environment as env } from '../../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
@@ -11,6 +12,6 @@ export class LoginService {
 
     constructor(private http: HttpClient) { }
     public login(loginModel: LoginModel): Observable<Admin> {
-        return this.http.post<Admin>('http://localhost:5122/admin/login', loginModel);
+        return this.http.post<Admin>(env.baseUrl + env.loginUrl, loginModel);
     }
 }
