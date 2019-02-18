@@ -9,8 +9,12 @@ const test = require('./Routes/Test/index')
 app.use(cors());
 app.use(express.json());
 
+app.get('/', (req, res) => {
+    res.status(200).json({ message: 'Connected!' });
+  });
+  
 app.use('/admin', admin) // Admin Routes
 app.use('/test', test);  // Test Routes
 
-const port = process.env.PORT || 5122;
+const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port} ⚡`));
