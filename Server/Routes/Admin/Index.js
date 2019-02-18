@@ -7,16 +7,16 @@ const Admin = require('../../Models/Admin');
 
 // Middleware usege:
 const authValidate = require('../../Middleware/Authentication');
-const registerValidation = require('../../Middleware/Registration');
+// const registerValidation = require('../../Middleware/Registration');
 
 router.post('/Login', (req, res) => {
-    try {               
+    try {
         var validate = authValidate.inputValidator(req.body.email, req.body.password);
         if (!validate) {
             let email = req.body.email;
             let password = req.body.password;
             let params = [new sqlP("Email", sql.VarChar(50), email),
-                          new sqlP("Password", sql.VarChar(50), password)]
+            new sqlP("Password", sql.VarChar(50), password)]
             repo.excecuteProcedureDB('sp_login', params, user => {
                 console.log(user);
                 let admin = new Admin(user.Id, user.Username, user.Email, user.Password, user.PhoneNumber, user.IsActive);
@@ -55,25 +55,21 @@ router.post('/Logout', (req, res) => {
 
 router.post('/Register', (req, res) => {
     try {
-        if (registerValidation.adminInputValidation(req.body.Username, req.body.Email,
-            req.body.Password, req.body.PhoneNumber)) {
-            let username = req.body.Username;
-            let email = req.body.Email;
-            let password = req.body.Password;
-            let phoneNumber = req.body.PhoneNumber;
-            let params = [new sqlP('Username', sql.VarChar(50), username),
-                          new sqlP('Email', sql.VarChar(50), email),
-                          new sqlP('Password', sql.VarChar(50), password),
-                          new sqlP('PhoneNumber', sql.VarChar(50), phoneNumber)];
-            repo.excecuteProcedureDB('sp_addNewAdmin', params, response => {
-                if (!response) {
-                    console.log(response);
-                    res.status(400).send('Something went wrong with the registration process.');
-                } else {
-                    res.status(200).send('New Admin has registered.');
-                }
-            });
-        }
+        let username = req.body.Username;
+        let email = req.body.Email;
+        let password = req.body.Password;
+        let phoneNumber = req.body.PhoneNumber;
+        let params = [new sqlP('Username', sql.VarChar(50), username),
+        new sqlP('Email', sql.VarChar(50), email),
+        new sqlP('Password', sql.VarChar(50), password),
+        new sqlP('PhoneNumber', sql.VarChar(50), phoneNumber)];
+        repo.excecuteProcedureDB('spRegisterAdmin', params, response => {
+            if (response == false) {
+                res.status(200).send('Username is already exist.');
+            } else {
+                res.status(200).send('New Admin has registered.');
+            }
+        });
     } catch (err) {
         console.log('Error --> ' + err);
         res.status(400).send('Something went wrong.');
