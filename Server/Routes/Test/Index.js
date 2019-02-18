@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 
 const sql = require('mssql');
 const sqlParameter = require('./../../Models/sqlParameter');
-const repository = require('../../db/repository');
+const repository = require('../../Dal/Repository');
 
 
 testRouter.get('/getTestsByCategory', (req, res) => {

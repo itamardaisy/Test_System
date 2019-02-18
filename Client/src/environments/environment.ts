@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://localhost:5221'
+  baseUrl: 'http://localhost:5221',
+  questionUrl: '/test/getQuestionsByCaegory'
 };
 
 /*
