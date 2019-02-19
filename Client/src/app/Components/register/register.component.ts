@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Admin } from 'src/app/Models/AdminUser';
 import { RegisterService } from 'src/app/Services/Register/register.service';
+import { EStatusCode as esc } from '../../Enums/EStatusCodes';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-register',
@@ -9,18 +11,27 @@ import { RegisterService } from 'src/app/Services/Register/register.service';
 })
 export class RegisterComponent implements OnInit {
     public newAdmin = new Admin();
-    constructor(private registerService: RegisterService) { }
+    isUsernameExist: boolean;
+    isEmailExist: boolean;
+    constructor(
+        private registerService: RegisterService,
+        private route: Router,
+        private activatedRoute: ActivatedRoute) {}
 
     ngOnInit() { }
 
     onSubmit() {
         const observable = this.registerService.register(this.newAdmin);
         console.log(this.newAdmin.Email);
-        observable.subscribe(admin => {
-            if (admin != null) {
-                console.log(admin);
+        observable.subscribe(response => {
+            if (response === esc.usernameExist) {
+                this.isUsernameExist = true;
+            } else if (response === esc.emailExist) {
+                this.isEmailExist = true;
             } else {
-                console.log('Some of the register process went wrong.');
+                console.log(response);
+                const admin = new Admin().Username = response;
+                this.route.navigate(['Home', {admin}]);
             }
         }, error => {
             console.log(error);
