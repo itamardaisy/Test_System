@@ -1,9 +1,9 @@
 export default interface Question {
-    id: number,
-    isMultiple: boolean,
-    content: string,
-    textBelow: string,
-    isHorizontal: boolean,
-    tags: string,
-    isActive: boolean
+    Id: number,
+    IsMultiple: boolean,
+    Content: string,
+    TextBelow: string,
+    IsHorizontal: boolean,
+    Tags: string,
+    IsActive: boolean
 }
