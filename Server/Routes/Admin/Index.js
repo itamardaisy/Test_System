@@ -1,4 +1,5 @@
 var express = require('express')
+const 
 const router = express.Router();
 const repo = require('../../Dal/Repository');
 const sqlP = require('../../Models/SqlParameter');
@@ -19,10 +20,8 @@ router.post('/login', (req, res) => {
             let params = [new sqlP("Email", sql.VarChar(50), email),
             new sqlP("Password", sql.VarChar(50), password)]
             repo.excecuteProcedureDB('spLogin', params, user => {
-                console.log(user);
                 let admin = new Admin(user.Id, user.Username, user.Email, user.Password, user.PhoneNumber, user.IsActive);
-                console.log('Admin --> ' + admin);
-                res.send(admin).status(200);
+                res.status(200).send({admin: admin});
             });
         }
         else {
@@ -43,7 +42,7 @@ router.post('/logout', (req, res) => {
                 if (response === statusCodes.unspecifiedError) {
                     res.status(400).send(statusCodes.unspecifiedError)
                 } else {
-                    res.status(200).send(statusCodes.success);
+                    res.status(200).send({status: statusCodes.success});
                 }
             });
         }
@@ -70,7 +69,7 @@ router.post('/register', (req, res) => {
                 } else if (response === statusCodes.emailExist) {
                     res.status(400).send(statusCodes.emailExist);
                 } else {
-                    res.status(200).send(statusCodes.success);
+                    res.status(200).send({status: statusCodes.success});
                 }
             });
         }

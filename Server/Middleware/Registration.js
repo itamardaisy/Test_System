@@ -1,18 +1,20 @@
 var emailValidator = require("email-validator");
-var passwordValidator = require('validate-password');
+ var PasswordValidator = require('validate-password');
 var phoneNumberValidator = require('validate-phone-number-node-js');
+const passwordValidator = new PasswordValidator();
+
 
 class RegisterValidation {
     adminInputValidation(email, password, phoneNumber) {
         if (this.checkEmailValidation(email) && this.checkPasswordValidation(password) && this.checkPhoneNumberValidation(phoneNumber)) {
             return true;
         } else {
-            return false;
+            return false;    
         }
     }
 
     checkPasswordValidation(password) {
-        return (passwordValidator(password)) ? true : false;
+        return (passwordValidator.checkPassword(password)) ? true : false;
     }
 
     checkPhoneNumberValidation(phoneNumber) {
