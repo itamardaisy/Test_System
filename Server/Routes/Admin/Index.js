@@ -22,7 +22,7 @@ router.post('/login', (req, res) => {
             repo.excecuteProcedureDB('spLogin', params, user => {
                 let admin = new Admin(user.Id, user.Username, user.Email, user.Password, user.PhoneNumber, user.IsActive);
                 res.status(200).send({admin: admin});
-            });
+           });
         }
         else {
             res.status(400).send('missing username or password');
