@@ -11,8 +11,8 @@ BEGIN
 
 	SELECT q.Content, q.Tags
 	FROM [dbo].[Question] AS q
-	WHERE Id = ( SELECT qtt.[QuestionId]
-				 FROM [dbo].[QuestionToTest] AS qtt
-				 WHERE TestId = @TestId )
+	WHERE Id IN ( SELECT qtt.[QuestionId]
+				  FROM [dbo].[QuestionToTest] AS qtt
+				  WHERE TestId = @TestId )
 END
 GO
