@@ -11,12 +11,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { QuestionsSelectComponent } from './Components/test/questions-select/questions-select.component';
+
+import { MatListModule } from '@angular/material/list';
 
 const appRoutes: Routes = [
-    { path: 'Login', component: LoginComponent },
     { path: 'Register', component: RegisterComponent },
     { path: 'QuestionManager', component: QuestionManagerComponent },
     { path: 'Login', component: LoginComponent },
+    { path: 'SelectQuestions', component: QuestionsSelectComponent }
 ];
 
 @NgModule({
@@ -26,13 +30,16 @@ const appRoutes: Routes = [
         LoginComponent,
         RegisterComponent,
         QuestionManagerComponent,
-        NavbarComponent
+        NavbarComponent,
+        QuestionsSelectComponent
     ],
     imports: [
         BrowserModule,
         FormsModule,
         HttpClientModule,
         MatTableModule,
+        BrowserAnimationsModule,
+        MatListModule,
         RouterModule.forRoot(
             appRoutes,
             { enableTracing: true }

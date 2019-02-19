@@ -1,0 +1,11 @@
+
+<mat-selection-list #question>
+  <mat-list-option *ngFor="let q of questionsList">
+    {{q.Content}}
+  </mat-list-option>
+</mat-selection-list>
+
+<p>
+  Options selected: {{question.selectedOptions.selected.length}}
+</p>
+
