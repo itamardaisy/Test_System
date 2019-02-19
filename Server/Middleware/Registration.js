@@ -1,6 +1,6 @@
-var emailValidator = require("email-validator");
- var PasswordValidator = require('validate-password');
-var phoneNumberValidator = require('validate-phone-number-node-js');
+const emailValidator = require("email-validator");
+const PasswordValidator = require('validate-password');
+const phoneNumberValidator = require('validate-phone-number-node-js');
 const passwordValidator = new PasswordValidator();
 
 

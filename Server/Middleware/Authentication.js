@@ -1,31 +1,19 @@
-var regexp = require('node-regexp')
+const emailValidator = require("email-validator");
+const PasswordValidator = require('validate-password');
+const passwordValidator = new PasswordValidator();
 
 class AuthValidation { 
     constructor() {}
     inputValidator(email, password) {
-        if (this.validateEmail(email) && this.validatePassword(password)){
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    emailValidator (email) {
-        if(this.validateEmail(email)){
-            return true;
-        } else {
-            return false;
-        }
+        return (this.validateEmail(email) && this.validatePassword(password)) ? true : false
     }
 
     validateEmail(email) {
-        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(String(email).toLowerCase());
+        return (emailValidator.validate(email)) ? true : false;
     }
 
     validatePassword(password) {
-        var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/
-        return re.test(String(password).toLowerCase());
+        return (passwordValidator.checkPassword(password)) ? true : false;
     }
 }
 module.exports = new AuthValidation();
