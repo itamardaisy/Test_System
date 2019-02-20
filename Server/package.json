@@ -9,15 +9,23 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "async": "^2.6.2",
     "bcrypt": "^3.0.4",
+    "bcrypt-nodejs": "0.0.3",
     "cors": "^2.8.5",
     "dcrypt": "0.0.2",
     "email-validator": "^2.0.4",
     "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "jsonwebtoken": "^8.4.0",
     "lodash": "^4.17.11",
+    "mongoose": "^5.4.14",
     "mssql": "^4.3.2",
     "node-regexp": "^0.1.1",
+    "nodemailer": "^5.1.1",
     "nodemon": "^1.18.10",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "validate-password": "^1.0.4",
     "validate-phone-number-node-js": "0.0.1"
   }

@@ -1,0 +1,46 @@
+<div class="container">
+    <form action="/action_page.php">
+        <div class="row">
+            <div class="col-25">
+                <label for="fname">Question Type:</label>
+            </div>
+            <div class="col-75">
+                <select aria-placeholder="Question Type">
+                    <option *ngFor="let option of options">{{option}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="ques_text">Question Text:</label>
+            </div>
+            <div class="col-75">
+                <textarea id="ques_text" name="subject" placeholder="Write something.." style="height:100px"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="text_below_ques">Text blow question:</label>
+            </div>
+            <div class="col-75">
+                <textarea id="text_below_ques" name="subject" placeholder="Write something.." style="height:150px"></textarea>
+            </div>
+        </div>
+        <hr style="color:black">
+        <div class="row">
+            <div class="col-25">
+                <label for="country">Country</label>
+            </div>
+            <div class="col-75">
+                <select id="country" name="country">
+                    <option value="australia">Australia</option>
+                    <option value="canada">Canada</option>
+                    <option value="usa">USA</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+</div>
