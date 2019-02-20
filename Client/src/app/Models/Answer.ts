@@ -1,4 +1,8 @@
 export class Answer {
-    Text: String;
-    IsCorrect: boolean;
+    public constructor(text, isCorrect) {
+        this.Text = text;
+        this.IsCorrect = isCorrect;
+    }
+    public Text: String;
+    public IsCorrect: boolean;
 }

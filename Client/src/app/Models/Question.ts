@@ -1,6 +1,6 @@
 import { Answer } from './Answer';
 
-export class Question {
+export default class Question {
     Id: number;
     IsMultiple: boolean;
     Content: string;

@@ -8,10 +8,13 @@ import { Answer } from 'src/app/Models/Answer';
 })
 export class EditQuestionComponent implements OnInit {
   public options = ['Single answer', 'Two Answers', 'Three answers'];
-  public questions: Answer[];
+  public answers: Answer[];
   constructor() {}
 
   ngOnInit() {
   }
 
+  addQuestion() {
+
+  }
 }

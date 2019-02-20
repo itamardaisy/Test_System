@@ -16,9 +16,28 @@
   }
   
   input[type=submit] {
-    background-color: #4CAF50;
+    background-color: rgb(20, 20, 22);
     color: white;
-    padding: 12px 20px;
+    padding: 12px 100px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+  }
+
+  .add-question {
+    display: flex;
+    justify-content: space-between; /* Can be changed in the live sample */
+  }
+
+  .answer-list {
+      justify-content: space-between;
+  }
+
+  input[type=button] {
+    background-color: rgb(20, 20, 22);
+    color: white;
+    padding: 12px 100px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -60,4 +79,14 @@
       width: 100%;
       margin-top: 0;
     }
+
+    hr { 
+        display: block;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        margin-left: auto;
+        margin-right: auto;
+        border-style: inset;
+        border-width: 1px;
+      }
   }
