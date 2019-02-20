@@ -11,8 +11,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
     public newAdmin = new Admin();
-    isUsernameExist: boolean;
-    isEmailExist: boolean;
+    public isUsernameExist: boolean;
+    public isEmailExist: boolean;
     constructor(
         private registerService: RegisterService,
         private route: Router,
@@ -24,6 +24,7 @@ export class RegisterComponent implements OnInit {
         const observable = this.registerService.register(this.newAdmin);
         console.log(this.newAdmin.Email);
         observable.subscribe(response => {
+            alert(response);
             if (response === esc.usernameExist) {
                 this.isUsernameExist = true;
             } else if (response === esc.emailExist) {
@@ -31,7 +32,7 @@ export class RegisterComponent implements OnInit {
             } else {
                 console.log(response);
                 const admin = new Admin().Username = response;
-                this.route.navigate(['Home', {admin}]);
+                this.route.navigate(['/Login']);
             }
         }, error => {
             console.log(error);

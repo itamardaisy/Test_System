@@ -8,7 +8,7 @@ const dbPool = new sql.ConnectionPool(config, err => {
 });
 
 class DBContext {
-
+    
     // This function is to execute a given procedure. 
     excecuteProcedureDB(procedureName, sqlParams, callBack) {
         var req = dbPool.request();

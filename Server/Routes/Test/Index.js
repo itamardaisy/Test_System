@@ -26,12 +26,4 @@ testRouter.get('/getQuestionsByCategory', (req, res) => {
         res.send({data});
     })
 });
-
 module.exports = testRouter;
-
-
-
-
-
-
-

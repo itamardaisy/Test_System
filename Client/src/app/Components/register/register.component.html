@@ -12,6 +12,7 @@
                                 <div class="form-group">
                                     <input [(ngModel)]="newAdmin.Username" [ngModelOptions]="{standalone: true}" type="text" class="form-control input-sm" placeholder="Username" required>
                                 </div>
+                                <div style="color: crimson" *ngIf="isUsernameExist">Username exist</div>
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
@@ -22,6 +23,7 @@
                         <div class="form-group">
                             <input [(ngModel)]="newAdmin.Email" [ngModelOptions]="{standalone: true}" type="email" class="form-control input-sm" placeholder="Email Address" required>
                         </div>
+                        <div style="color: crimson" *ngIf="isEmailExist">Email exist</div>
                         <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
@@ -46,8 +48,6 @@
                         </script>
                         <input type="submit" value="Register" class="btn btn-info btn-block">
                     </form>
-                    <div style="color: crimson" *ngIf="isUsernameExist">Username exist</div>
-                    <div style="color: crimson" *ngIf="isEmailExist">Email exist</div>
                 </div>
             </div>
         </div>

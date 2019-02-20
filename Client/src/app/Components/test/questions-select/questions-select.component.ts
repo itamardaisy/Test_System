@@ -16,7 +16,7 @@ export class QuestionsSelectComponent implements OnInit {
   ngOnInit() {
     this.questionsService.get()
       .subscribe(data => {
-        this.questionsList = data.data[0];         
-      }, err => alert(err));   
+        this.questionsList = data.data[0];
+      }, err => alert(err));
   }
 }
