@@ -12,11 +12,16 @@ import { ResetPasswordComponent } from './Components/reset-password/reset-passwo
 import { EditQuestionComponent } from './Components/edit-question/edit-question.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import { MatTableModule } from '@angular/material';
+import { MatTableModule, MatInputModule } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSelectModule} from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatListModule } from '@angular/material/list';
+import { CreateTestComponent } from './Components/test/create-test/create-test.component';
 
 const appRoutes: Routes = [
     { path: 'Register', component: RegisterComponent },
@@ -46,6 +51,10 @@ const appRoutes: Routes = [
         MatTableModule,
         BrowserAnimationsModule,
         MatListModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatCheckboxModule,
         RouterModule.forRoot(
             appRoutes,
             { enableTracing: true }
