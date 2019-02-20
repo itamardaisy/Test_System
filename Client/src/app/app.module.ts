@@ -8,13 +8,17 @@ import { RegisterComponent } from './Components/register/register.component';
 import { QuestionManagerComponent } from './Components/question-manager/question-manager.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
-import { MatTableModule } from '@angular/material';
+import { MatTableModule, MatInputModule } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { QuestionsSelectComponent } from './Components/test/questions-select/questions-select.component';
 
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSelectModule} from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatListModule } from '@angular/material/list';
+import { CreateTestComponent } from './Components/test/create-test/create-test.component';
 
 const appRoutes: Routes = [
     { path: 'Register', component: RegisterComponent },
@@ -31,7 +35,8 @@ const appRoutes: Routes = [
         RegisterComponent,
         QuestionManagerComponent,
         NavbarComponent,
-        QuestionsSelectComponent
+        QuestionsSelectComponent,
+        CreateTestComponent
     ],
     imports: [
         BrowserModule,
@@ -40,6 +45,10 @@ const appRoutes: Routes = [
         MatTableModule,
         BrowserAnimationsModule,
         MatListModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatCheckboxModule,
         RouterModule.forRoot(
             appRoutes,
             { enableTracing: true }

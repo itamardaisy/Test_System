@@ -1,0 +1,77 @@
+<form #testForm="ngForm">
+
+  <div>{{testForm.value | json}}</div>
+  <div>{{testModel | json}}</div>
+
+
+  <div class="testContainer">
+    <div class="testDetailsContainer">
+
+      <div>Field of study: <b>development</b></div>
+
+      <mat-form-field>
+        <mat-select placeholder="Language">
+          <mat-option value="option">Option</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Test name" name="testName" [(ngModel)]="testModel.Name" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Passing grade" name="PassingGrade" [(ngModel)]="testModel.PassingGrade" required>
+      </mat-form-field>
+
+      <mat-checkbox name="ShowAnswers" [(ngModel)]="testModel.ShowAnswers">Show correct answers after submission
+      </mat-checkbox>
+
+      <mat-form-field>
+        <textarea matInput placeholder="Header content" name="HeaderContent" [(ngModel)]="testModel.HeaderContent"
+          required></textarea>
+      </mat-form-field>
+
+      <mat-form-field>
+        <textarea matInput placeholder="Text success" name="TextSuccess" [(ngModel)]="testModel.TextSuccess"
+          required></textarea>
+      </mat-form-field>
+
+      <mat-form-field>
+        <textarea matInput placeholder="Text failure" name="TextFailure" [(ngModel)]="testModel.TextFailure"
+          required></textarea>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="cer">
+          <mat-option value="option">Option</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </div>
+
+    <div class="testDetailsContainer">
+
+      <mat-form-field>
+        <input matInput placeholder="Subject success text" name="SubjectSuccessText"
+          [(ngModel)]="testModel.SubjectSuccessText" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <textarea matInput placeholder="Subject success body" name="SubjectSuccessBody"
+          [(ngModel)]="testModel.SubjectSuccessBody" required></textarea>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Subject failure text" name="SubjectSuccessText"
+          [(ngModel)]="testModel.SubjectSuccessText" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <textarea matInput placeholder="Subject failure body" name="SubjectFailureBody"
+          [(ngModel)]="testModel.SubjectFailureBody" required></textarea>
+      </mat-form-field>
+
+    </div>
+  </div>
+
+</form>
