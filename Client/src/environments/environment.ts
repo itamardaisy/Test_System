@@ -7,7 +7,9 @@ export const environment = {
     baseUrl: 'http://localhost:3000',
     questionUrl: '/test/getQuestionsByCategory',
     registerUrl: '/admin/register',
-    loginUrl: '/admin/login'
+    loginUrl: '/admin/login',
+    templateUrl: '/test/getPredefinedTemplates'
+
 };
 
 /*

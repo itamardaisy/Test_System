@@ -1,17 +1,17 @@
-<form #testForm="ngForm">
+<form #testForm="ngForm" (ngSubmit)="Submit($event)">
 
   <div>{{testForm.value | json}}</div>
-  <div>{{testModel | json}}</div>
+  <!-- <div>{{testModel | json}}</div> -->
 
 
   <div class="testContainer">
-    <div class="testDetailsContainer">
-
+    <div class="testDetailsContainer halfPage">
+      <h1>Genral test details</h1>
       <div>Field of study: <b>development</b></div>
 
       <mat-form-field>
-        <mat-select placeholder="Language">
-          <mat-option value="option">Option</mat-option>
+        <mat-select placeholder="Language" name="languages" [(ngModel)]="testModel.Language">
+          <mat-option *ngFor="let language of languages" [value]="language">{{language}}</mat-option>
         </mat-select>
       </mat-form-field>
 
@@ -42,14 +42,29 @@
       </mat-form-field>
 
       <mat-form-field>
-        <mat-select placeholder="cer">
-          <mat-option value="option">Option</mat-option>
+        <mat-select placeholder="certificate" name="certificate" [(ngModel)]="testModel.CertificateURL">
+          <mat-option *ngFor="let c of certificates" [value]="c">{{c}}</mat-option>
         </mat-select>
       </mat-form-field>
 
     </div>
 
-    <div class="testDetailsContainer">
+    <div class="testDetailsContainer halfPage">
+      <h1>Email delivery upon test completion</h1>
+
+      <div class="emeilArea">
+        <div>Current status: <b [ngClass]="email.valid? 'on' : 'off'">{{email.valid? 'on':'off'}}</b></div>
+
+        <b>Email Delivery Upon Test Completion</b>
+        <div>to torn on email delivery, fill out the mandatory fields in this section</div>
+
+        <mat-form-field>
+          <input type="email" matInput placeholder="from" name="CreatorEmail" [(ngModel)]="testModel.CreatorEmail"
+            #email="ngModel" required>
+        </mat-form-field>
+      </div>
+
+      <b class="boundaryLine">Passing the test</b>
 
       <mat-form-field>
         <input matInput placeholder="Subject success text" name="SubjectSuccessText"
@@ -58,8 +73,17 @@
 
       <mat-form-field>
         <textarea matInput placeholder="Subject success body" name="SubjectSuccessBody"
-          [(ngModel)]="testModel.SubjectSuccessBody" required></textarea>
+          [(ngModel)]="testModel.SubjectSuccessBody" required #successTextArea></textarea>
       </mat-form-field>
+
+      <b> Predefined templates - click to copy to clipboard</b>
+
+      <div class="template">
+        <input *ngFor="let i of templates; let ind = index" type="text" (click)="Copy($event, true)" readonly="readonly"
+          value={{i}} />
+      </div>
+
+      <b class="boundaryLine">Failing the test</b>
 
       <mat-form-field>
         <input matInput placeholder="Subject failure text" name="SubjectSuccessText"
@@ -68,10 +92,37 @@
 
       <mat-form-field>
         <textarea matInput placeholder="Subject failure body" name="SubjectFailureBody"
-          [(ngModel)]="testModel.SubjectFailureBody" required></textarea>
+          [(ngModel)]="testModel.SubjectFailureBody" required #failureTextArea></textarea>
       </mat-form-field>
+
+      <b> Predefined templates - click to copy to clipboard</b>
+
+      <div class="template">
+        <input *ngFor="let i of templates; let ind = index" type="text" (click)="Copy($event, false)"
+          readonly="readonly" value={{i+ind}} #test+ind />
+      </div>
+
+      <!-- <input type="text" (click)="copy()" readonly="readonly" value="Text to copy" #test /> -->
 
     </div>
   </div>
-
+  <div class="testDetailsContainer">
+      <app-questions-select></app-questions-select>
+  </div>
+  <input type="submit" value="Submit"/>
 </form>
+
+<div>end</div>
+
+
+
+
+<!-- <span>{{email.valid? 'on':'off'}}</span> -->
+<!-- <span *ngIf="email.valid">off</span>
+      <span *ngIf="!email.valid">on</span>
+
+      
+      <span *ngIf="email.valid; else on">off</span>
+      <ng-template #on>
+        <span *ngIf="!email.valid">on</span>
+      </ng-template> -->

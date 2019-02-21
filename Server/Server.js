@@ -9,8 +9,6 @@ const question = require('./Routes/Question/Index');
 // Middlewares
 app.use(cors());
 app.use(express.json());
-app.use(cookieParser());
-app.use(session({ secret: 'session secret key' }));
 
 app.get('/', (req, res) => {
     res.status(200).json({ message: 'Connected!' });
