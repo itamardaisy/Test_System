@@ -17,11 +17,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatSelectModule} from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatListModule } from '@angular/material/list';
 import { CreateTestComponent } from './Components/test/create-test/create-test.component';
+
 
 const appRoutes: Routes = [
     { path: 'Register', component: RegisterComponent },
@@ -42,7 +43,8 @@ const appRoutes: Routes = [
         NavbarComponent,
         QuestionsSelectComponent,
         ResetPasswordComponent,
-        EditQuestionComponent
+        EditQuestionComponent,
+        CreateTestComponent
     ],
     imports: [
         BrowserModule,

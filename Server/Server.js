@@ -8,8 +8,6 @@ const test = require('./Routes/Test/index')
 // Middlewares
 app.use(cors());
 app.use(express.json());
-app.use(cookieParser());
-app.use(session({ secret: 'session secret key' }));
 
 app.get('/', (req, res) => {
     res.status(200).json({ message: 'Connected!' });

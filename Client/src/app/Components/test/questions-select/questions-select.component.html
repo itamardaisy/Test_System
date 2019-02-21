@@ -1,6 +1,20 @@
+<h1>Questions</h1>
+
+<div>
+  <b class="questionsText">Note: this test is set to be a 'predefined' test, whice means:</b>
+  <ul>
+    <li>All the questions that yue select here will be included in the test</li>
+    <li>All respondets will receive the SAME set of questions, presented in a different order</li>
+  </ul>
+  <hr>
+  <b>Select the questins that you want to include in the test</b>
+  <p>You can use the tag filter to narrow down the list to a specific subject, don't worry, filtering won't affect your previeus selections</p>
+</div>
+
 
 <mat-selection-list #question>
   <mat-list-option *ngFor="let q of questionsList">
+    <input type="checkbox" name="{{q.Content}}" [(ngModel)]="q.Content">
     {{q.Content}}
   </mat-list-option>
 </mat-selection-list>
@@ -8,4 +22,3 @@
 <p>
   Options selected: {{question.selectedOptions.selected.length}}
 </p>
-

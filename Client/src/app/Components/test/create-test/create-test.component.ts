@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { TestModel } from '../../../Models/TestModel';
 import { GetTemplatesService } from 'src/app/Services/Test/get-templates.service';
 
@@ -9,10 +9,12 @@ import { GetTemplatesService } from 'src/app/Services/Test/get-templates.service
 })
 export class CreateTestComponent implements OnInit {
 
-  @ViewChild('test') test: any;
+  //@ViewChild('test') test: any;
+  @ViewChild('successTextArea') successText: ElementRef;
+  @ViewChild('failureTextArea') failureText: ElementRef;
 
   languages = ['engliah', 'hebrew'];
-  templates: string [] = [];
+  templates: string[] = [];
   certificates: any = ['gold', 'silver', 'copper'];
 
 
@@ -23,18 +25,33 @@ export class CreateTestComponent implements OnInit {
 
   ngOnInit() {
     this.templateService.get()
-    .subscribe(data => {
-      this.templates = data;
-    }, err => alert(err));
+      .subscribe(data => {
+        this.templates = data;
+      }, err => alert(err));
   }
 
-  copy(event) {
-    event.nativeElement.select();
-    document.execCommand('copy');
+  Copy(event, isSuccess) {
+    const val = event.currentTarget.value;
+
+    if (isSuccess) {
+      this.successText.nativeElement.value += ` ${val}`;
+    } else {
+      this.failureText.nativeElement.value += ` ${val}`;
+    }
   }
-  // copy(event) {
-  //   this.test.nativeElement.select();
-  //   document.execCommand('copy');
-  // }
+
+  Submit(event) {
+    console.log(event);
+  }
+
 
 }
+
+
+   // event.currentTarget.select();
+    // document.execCommand('copy');
+    // if(isSuccess){
+    // this.successText.nativeElement.focus();
+    // document.execCommand('paste');
+
+

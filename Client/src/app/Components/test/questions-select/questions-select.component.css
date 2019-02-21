@@ -1,0 +1,8 @@
+.questionsText > * {
+    margin: 20px 0 0 20px;
+    padding: 2%;
+  }
+
+  hr {
+    border-top: 1px solid #b8bdc0;
+  }
