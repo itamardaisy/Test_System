@@ -7,14 +7,20 @@ import { Answer } from 'src/app/Models/Answer';
   styleUrls: ['./edit-question.component.css']
 })
 export class EditQuestionComponent implements OnInit {
-  public options = ['Single answer', 'Two Answers', 'Three answers'];
-  public answers: Answer[];
+  options = ['Single answer', 'Two Answers', 'Three answers'];
+  answers: Answer[];
+  answer: Answer;
   constructor() {}
 
   ngOnInit() {
+    this.answer = new Answer('', false);
   }
 
   addQuestion() {
 
+  }
+
+  changeState(event) {
+    this.answer.IsCorrect = event.target.checked;
   }
 }

@@ -1,11 +1,11 @@
 <div class="container">
-    <form (ngSubmit)='addQuestion()' #registerForm="ngForm" role="form" style="display: block;">
+    <form (ngSubmit)='addQuestion()' #registerForm="ngForm" role="form">
         <div class="row">
             <div class="col-25">
                 <label for="fname">Question Type:</label>
             </div>
             <div class="col-75">
-                <select aria-placeholder="Question Type">
+                <select>
                     <option *ngFor="let option of options">{{option}}</option>
                 </select>
             </div>
@@ -23,26 +23,12 @@
                 <label for="text_below_ques">Text blow question:</label>
             </div>
             <div class="col-75">
-                <textarea id="text_below_ques" name="subject" placeholder="Write something.."
-                    style="height:150px"></textarea>
+                <textarea id="text_below_ques" name="subject" placeholder="Write something.." style="height:150px"></textarea>
             </div>
         </div>
-        <hr>
         <div class="row">
             <div class="col-25">
                 <label for="text_below_ques">Text blow question:</label>
-            </div>
-            <div class="col-75">
-                <div class="add-question">
-                    <textarea id="ques_text" name="subject" placeholder="Write something.." style="height:50px; width:750px;"></textarea>
-                    <div>
-                        <label for="isCorrect">Is Correct</label>
-                        <input type="checkbox" id="isCorrect">
-                    </div>
-                </div>
-                <select *ngIf="answers.length !== 0">
-                    <option *ngFor="let answer of answers">{{answer}}</option>
-                </select>
             </div>
         </div>
         <div class="row">
@@ -50,3 +36,21 @@
         </div>
     </form>
 </div>
+<hr>
+<!-- This conteiner is for the question adding -->
+<div class="container">
+    <form (ngSubmit)='addQuestion()' class="form-inline" #registerForm="ngForm" role="form">
+        <label for="email">Answer Content:</label>
+        <textarea [(ngModel)]="answer.Text" id="ques_text" name="subject" style="height:50px; width:750px;"></textarea>
+        <label>
+            <input [(ngModel)]="answer.IsCorrect" data-md-icheck (change)="changeState($event)" type="checkbox"> Is Correct
+        </label>
+        <button type="submit">Add</button>
+    </form>
+    <div class="row">
+        <select *ngIf="answers.length !== 0">
+            <option *ngFor="let answer of answers">{{answer}}</option>
+        </select>
+    </div>
+</div>
+<div>{{answer.IsCorrect}}</div>
