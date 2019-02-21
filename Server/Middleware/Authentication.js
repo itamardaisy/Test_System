@@ -2,8 +2,8 @@ const emailValidator = require("email-validator");
 const PasswordValidator = require('validate-password');
 const passwordValidator = new PasswordValidator();
 
-class AuthValidation { 
-    constructor() {}
+class AuthValidation {
+    constructor() { }
     inputValidator(email, password) {
         return (this.validateEmail(email) && this.validatePassword(password)) ? true : false
     }

@@ -7,12 +7,15 @@ import { LoginComponent } from './Components/login/login.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { QuestionManagerComponent } from './Components/question-manager/question-manager.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
+import { QuestionsSelectComponent } from './Components/test/questions-select/questions-select.component';
+import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
+import { EditQuestionComponent } from './Components/edit-question/edit-question.component';
+
 import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule, MatInputModule } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { QuestionsSelectComponent } from './Components/test/questions-select/questions-select.component';
 
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
@@ -24,7 +27,9 @@ const appRoutes: Routes = [
     { path: 'Register', component: RegisterComponent },
     { path: 'QuestionManager', component: QuestionManagerComponent },
     { path: 'Login', component: LoginComponent },
-    { path: 'SelectQuestions', component: QuestionsSelectComponent }
+    { path: 'SelectQuestions', component: QuestionsSelectComponent },
+    { path: 'QuestionManager', component: QuestionManagerComponent },
+    { path: 'EditQuestion', component: EditQuestionComponent }
 ];
 
 @NgModule({
@@ -36,7 +41,8 @@ const appRoutes: Routes = [
         QuestionManagerComponent,
         NavbarComponent,
         QuestionsSelectComponent,
-        CreateTestComponent
+        ResetPasswordComponent,
+        EditQuestionComponent
     ],
     imports: [
         BrowserModule,
