@@ -7,16 +7,17 @@ import Question from 'src/app/Models/Question';
 
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class GetQuestionsService {
-    questions: Question[] = [];
 
-    constructor(private http: HttpClient) {
+  questions: Question[] = [];
 
-    }
+  constructor(private http: HttpClient) {
 
-    get(): Observable<any> {
-        return this.http.get(env.baseUrl + env.questionUrl);
-    }
+  }
+
+  get(): Observable<any> {
+      return this.http.get(env.baseUrl + env.questionUrl);
+  }
 }
