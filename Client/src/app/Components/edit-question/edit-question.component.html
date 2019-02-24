@@ -1,5 +1,5 @@
-<form (ngSubmit)='addQuestion()' #registerForm="ngForm" role="form">
-    <div class="container">
+<div class="container">
+    <form (ngSubmit)='save()' #registerForm="ngForm" role="form">
         <div class="row">
             <div class="col-25">
                 <label for="fname">Question Type:</label>
@@ -15,7 +15,7 @@
                 <label for="ques_text">Question Text:</label>
             </div>
             <div class="col-75">
-                <textarea id="ques_text" name="subject" placeholder="Write something.." style="height:100px"></textarea>
+                <textarea [(ngModel)]="question.Content" id="ques_text" name="subject" style="height:100px"></textarea>
             </div>
         </div>
         <div class="row">
@@ -23,7 +23,7 @@
                 <label for="text_below_ques">Text blow question:</label>
             </div>
             <div class="col-75">
-                <textarea id="text_below_ques" name="subject" placeholder="Write something.."
+                <textarea [(ngModel)]="question.TextBelow" id="text_below_ques" name="subject"
                     style="height:150px"></textarea>
             </div>
         </div>
@@ -32,29 +32,39 @@
                 <label for="text_below_ques">Text blow question:</label>
             </div>
         </div>
+        <button type="submit">Save</button>
+    </form>
+</div>
+<hr>
+<!-- This conteiner is for the question adding -->
+<div class="container">
+    <form (ngSubmit)='saveAnswers()' #registerForm="ngForm" role="form">
         <div class="row">
-            <input type="submit" value="Submit">
-        </div>
-        <hr>
-        <!-- This conteiner is for the question adding -->
-        <div class="row">
-            <label *ngIf="answersNotEmpty">Checked for correct answer:
-                <mat-selection-list>
-                    <mat-list-option *ngFor="let answer of answers">
-                        <label>Answer Content:
-                            <textarea [(ngModel)]="answer.Text" name="subject"
-                                style="height:40px; width:750px;"></textarea>
-                        </label>
-                    </mat-list-option>
-                </mat-selection-list>
-            </label>
-            <button (click)="addQuestion()" style="height:40px; width:200px;">Add an answer</button>
-            <div *ngIf="textEmpty">
+            <div *ngIf="_answersNotEmpty">
+                <label>Answer:
+                    <mat-list>
+                        <mat-list-item *ngFor="let answer of answers">
+                            <label>Answer Content:
+                                <textarea placeholder="Answer content" [(ngModel)]="answer.Text"
+                                    style="height:40px; width:750px;"></textarea>
+                            </label>
+                            <label>
+                                <mat-radio-group [(ngModel)]="answer.IsCorrect">   
+                                    <mat-radio-button [value]="true" (change)="changeState($event)">
+                                        Is Correct
+                                    </mat-radio-button>
+                                </mat-radio-group> </label>
+                        </mat-list-item>
+                    </mat-list>
+                </label>
+            </div>
+            <button (click)="addQuestion()">Add an answer</button>
+            <button type="submit">Save answers</button>
+            <div *ngIf="_textEmpty">
                 <div class="alert alert-danger">
-                    <strong>Danger!</strong> This alert box could indicate a dangerous or potentially negative action.
+                    <strong>Cannot save.</strong> some of your question content are empty.
                 </div>
             </div>
         </div>
-    </div>
-</form>
-<div>{{answer.IsCorrect}}</div>
+    </form>
+</div>

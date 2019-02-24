@@ -24,7 +24,6 @@ export class RegisterComponent implements OnInit {
         const observable = this.registerService.register(this.newAdmin);
         console.log(this.newAdmin.Email);
         observable.subscribe(response => {
-            alert(response);
             if (response === esc.usernameExist) {
                 this.isUsernameExist = true;
             } else if (response === esc.emailExist) {
