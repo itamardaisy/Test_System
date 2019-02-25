@@ -8,11 +8,47 @@
   </ul>
   <hr>
   <b>Select the questins that you want to include in the test</b>
-  <p>You can use the tag filter to narrow down the list to a specific subject, don't worry, filtering won't affect your previeus selections</p>
+  <p>You can use the tag filter to narrow down the list to a specific subject, don't worry, filtering won't affect your
+    previeus selections</p>
+</div>
+
+<div class="tableContainer">
+  <mat-form-field>
+    <input class="myInput" matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+</div>
+
+<div class="tableContainer">
+ 
+  
+ 
+
+  <table mat-table [dataSource]="questionsList" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="Content" ]>
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element">
+          {{element.Content}}
+       </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Id">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element">{{element.Id}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
 </div>
 
 
-<mat-selection-list #question>
+
+
+
+
+<!-- <mat-selection-list #question>
   <mat-list-option *ngFor="let q of questionsList">
     <input type="checkbox" name="{{q.Content}}" [(ngModel)]="q.Content">
     {{q.Content}}
@@ -21,4 +57,4 @@
 
 <p>
   Options selected: {{question.selectedOptions.selected.length}}
-</p>
+</p> -->

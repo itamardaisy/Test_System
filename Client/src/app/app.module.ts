@@ -17,11 +17,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatListModule } from '@angular/material/list';
 import { CreateTestComponent } from './Components/test/create-test/create-test.component';
+import { TableSortingExample } from './Components/test/testfilter/testfilter.component';
 
 
 const appRoutes: Routes = [
@@ -44,7 +46,8 @@ const appRoutes: Routes = [
         QuestionsSelectComponent,
         ResetPasswordComponent,
         EditQuestionComponent,
-        CreateTestComponent
+        CreateTestComponent,
+        TableSortingExample
     ],
     imports: [
         BrowserModule,
