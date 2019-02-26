@@ -1,13 +1,16 @@
 <div class="container">
-    <form (ngSubmit)='save()' #registerForm="ngForm" role="form">
+    <form (ngSubmit)='save()' role="form">
         <div class="row">
             <div class="col-25">
                 <label for="fname">Question Type:</label>
             </div>
             <div class="col-75">
-                <select>
-                    <option *ngFor="let option of options">{{option}}</option>
-                </select>
+                <mat-form-field>
+                    <mat-select [(value)]="selectedOptions">
+                        <mat-option>Multiple answers question</mat-option>
+                        <mat-option>Single answer question</mat-option>
+                    </mat-select>
+                </mat-form-field>
             </div>
         </div>
         <div class="row">
@@ -15,7 +18,7 @@
                 <label for="ques_text">Question Text:</label>
             </div>
             <div class="col-75">
-                <textarea [(ngModel)]="question.Content" id="ques_text" name="subject" style="height:100px"></textarea>
+                <textarea [(ngModel)]="question.Content" id="ques_text" style="height:100px"></textarea>
             </div>
         </div>
         <div class="row">
@@ -27,44 +30,50 @@
                     style="height:150px"></textarea>
             </div>
         </div>
-        <div class="row">
-            <div class="col-25">
-                <label for="text_below_ques">Text blow question:</label>
-            </div>
-        </div>
-        <button type="submit">Save</button>
-    </form>
-</div>
-<hr>
-<!-- This conteiner is for the question adding -->
-<div class="container">
-    <form (ngSubmit)='saveAnswers()' #registerForm="ngForm" role="form">
+        <hr>
         <div class="row">
             <div *ngIf="_answersNotEmpty">
-                <label>Answer:
-                    <mat-list>
+                <div class="col-25">
+                    <label for="answer_list">Answers:</label>
+                </div>
+                <div class="col-75">
+                    <mat-list #answer_list>
                         <mat-list-item *ngFor="let answer of answers">
-                            <label>Answer Content:
-                                <textarea placeholder="Answer content" [(ngModel)]="answer.Text"
-                                    style="height:40px; width:750px;"></textarea>
-                            </label>
-                            <label>
-                                <mat-radio-group [(ngModel)]="answer.IsCorrect">   
-                                    <mat-radio-button [value]="true" (change)="changeState($event)">
-                                        Is Correct
-                                    </mat-radio-button>
-                                </mat-radio-group> </label>
+                            <section>
+                                <textarea placeholder="Answer content" 
+                                          [(ngModel)]="answer.Text" 
+                                          style="height:40px"
+                                          [ngModelOptions]="{standalone: true}">
+                                </textarea>
+                            </section>
+                            <ng-container *ngIf="isSingleChois">
+                                <section class="example-section">
+                                    <mat-checkbox (click)="setNumOfSelected()"
+                                                  disable="_numOfSelected === 1 && !answer.IsCorrect" 
+                                                  [(ngModel)]="answer.IsCorrect" 
+                                                  [ngModelOptions]="{standalone: true}">Is Correct
+                                    </mat-checkbox>
+                                </section>            
+                            </ng-container>
+                            <ng-template #elseTemplate>
+                                <section class="example-section">
+                                    <mat-checkbox (click)="setNumOfSelected()" 
+                                                  [(ngModel)]="answer.IsCorrect" 
+                                                  [ngModelOptions]="{standalone: true}">Is Correct
+                                    </mat-checkbox>
+                                </section>  
+                            </ng-template>
                         </mat-list-item>
                     </mat-list>
-                </label>
+                </div>
             </div>
             <button (click)="addQuestion()">Add an answer</button>
-            <button type="submit">Save answers</button>
             <div *ngIf="_textEmpty">
                 <div class="alert alert-danger">
                     <strong>Cannot save.</strong> some of your question content are empty.
                 </div>
             </div>
+            <button type="submit">Save</button>
         </div>
     </form>
 </div>

@@ -21,7 +21,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatListModule } from '@angular/material/list';
-import {MatRadioModule} from '@angular/material/radio';
 import { CreateTestComponent } from './Components/test/create-test/create-test.component';
 
 
@@ -58,7 +57,6 @@ const appRoutes: Routes = [
         MatInputModule,
         MatSelectModule,
         MatCheckboxModule,
-        MatRadioModule,
         RouterModule.forRoot(
             appRoutes,
             { enableTracing: true }

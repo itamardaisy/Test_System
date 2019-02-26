@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Answer } from 'src/app/Models/Answer';
-import Question from 'src/app/Models/Question';
 import { EStatusCode as esc } from '../../Enums/EStatusCodes';
 import { QuestionService } from 'src/app/Services/Question/question.service';
 import { MatRadioChange } from '@angular/material';
+import { EQuestionType as eqt } from '../../Enums/EQuestionType';
+import Question from 'src/app/Models/Question';
 
 @Component({
     selector: 'app-edit-question',
@@ -12,7 +13,7 @@ import { MatRadioChange } from '@angular/material';
 })
 export class EditQuestionComponent implements OnInit {
     // Models for binding.
-    public options = ['Single answer question', 'Multiple answers question'];
+    public selectedOptions = 'Single answer question';
     public question = new Question();
     public answers: Answer[] = new Array();
 
@@ -21,6 +22,8 @@ export class EditQuestionComponent implements OnInit {
     public _questionHasNotSaved: boolean;
     public _answersNotEmpty: boolean;
     public _success: boolean;
+    public _isSingleChois: boolean;
+    public _numOfSelected = 0;
 
     // view child
 
@@ -65,7 +68,9 @@ export class EditQuestionComponent implements OnInit {
         });
     }
 
-    changeState(event: MatRadioChange) {
-        alert('slfnj');
+    public setNumOfSelected() {
+        alert(this._numOfSelected.toString());
+        this._numOfSelected++;
+        alert(this._numOfSelected.toString());
     }
 }

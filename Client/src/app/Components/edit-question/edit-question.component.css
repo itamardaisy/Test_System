@@ -104,6 +104,13 @@
     border-radius: 4px;
 }
 
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+
 .example-radio-group {
   display: inline-flex;
   flex-direction: column;
