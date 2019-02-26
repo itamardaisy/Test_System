@@ -47,5 +47,10 @@ export class TableSortingExample implements OnInit {
   applyFilter2(filterValue: string) {
    this.a.filter = filterValue.trim().toLowerCase();
   }
+
+  test(event){
+    console.log(event);
+    alert('lll')
+  }
 }
 

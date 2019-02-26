@@ -1,7 +1,7 @@
 <h1>Questions</h1>
 
-<div>
-  <b class="questionsText">Note: this test is set to be a 'predefined' test, whice means:</b>
+<div class="questionsText">
+  <b>Note: this test is set to be a 'predefined' test, whice means:</b>
   <ul>
     <li>All the questions that yue select here will be included in the test</li>
     <li>All respondets will receive the SAME set of questions, presented in a different order</li>
@@ -12,24 +12,22 @@
     previeus selections</p>
 </div>
 
-<div class="tableContainer">
+<div class="filterContainer">
   <mat-form-field>
-    <input class="myInput" matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    <input class="myInput" matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter by tag or content">
   </mat-form-field>
 </div>
 
 <div class="tableContainer">
- 
-  
- 
 
   <table mat-table [dataSource]="questionsList" class="mat-elevation-z8">
 
-    <ng-container matColumnDef="Content" ]>
-      <th mat-header-cell *matHeaderCellDef> No. </th>
+    <ng-container matColumnDef="Content">
+      <th mat-header-cell *matHeaderCellDef>Title </th>
       <td mat-cell *matCellDef="let element">
-          {{element.Content}}
-       </td>
+          <!-- [ngClass]="!isSelected? 'mat-header-cell' : 'btnSelected'" -->
+        {{element.Content}}
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="Id">
@@ -37,8 +35,16 @@
       <td mat-cell *matCellDef="let element">{{element.Id}} </td>
     </ng-container>
 
+    <ng-container matColumnDef="Show">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td class="myInput" mat-cell *matCellDef="let element">
+        <button  mat-raised-button color="primary"
+          (click)="test(element.Id)">Show</button>      
+      </td>
+    </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr style="cursor: pointer" [class.selected]="row.IsSelected" (click)="onSelect(row)" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
   </table>
 </div>

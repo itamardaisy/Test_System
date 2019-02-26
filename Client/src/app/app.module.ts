@@ -17,14 +17,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
+import {MatDialogModule} from '@angular/material/dialog';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatListModule } from '@angular/material/list';
 import { CreateTestComponent } from './Components/test/create-test/create-test.component';
 import { TableSortingExample } from './Components/test/testfilter/testfilter.component';
-
+import {MatButtonModule} from '@angular/material/button'
 
 const appRoutes: Routes = [
     { path: 'Register', component: RegisterComponent },
@@ -60,6 +60,8 @@ const appRoutes: Routes = [
         MatInputModule,
         MatSelectModule,
         MatCheckboxModule,
+        MatDialogModule,
+        MatButtonModule,
         RouterModule.forRoot(
             appRoutes,
             { enableTracing: true }

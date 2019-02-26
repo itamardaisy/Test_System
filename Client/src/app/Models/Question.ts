@@ -8,5 +8,6 @@ export default class Question {
     IsHorizontal: boolean;
     Tags: string;
     IsActive: boolean;
+    IsSelected: boolean;
     Answers: Answer[];
 }

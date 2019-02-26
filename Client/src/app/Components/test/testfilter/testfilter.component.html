@@ -48,3 +48,6 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table> 
+
+<input class="tt" type="button" (onclick)="test($event.target.value)" placeholder="show"/>
+<button  (onclick)="test($event.target.value)" placeholder="show"></button>
