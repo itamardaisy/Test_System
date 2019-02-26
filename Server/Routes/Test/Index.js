@@ -33,4 +33,8 @@ testRouter.get('/getPredefinedTemplates', (req, res) => {
     res.send( templates);
 });
 
+testRouter.post('/addTest', (req, res) => {
+    console.log(req, req.body);
+})
+
 module.exports = testRouter;

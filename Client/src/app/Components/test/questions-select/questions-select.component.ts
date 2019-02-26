@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, Output, EventEmitter } from '@angular/core';
 import { GetQuestionsService } from '../../../Services/Test/get-questions.service';
 import Question from 'src/app/Models/Question';
 import { ControlContainer, NgForm } from '@angular/forms';
@@ -11,13 +11,10 @@ import { MatTableDataSource } from '@angular/material';
   viewProviders: [{ provide: ControlContainer, useExisting: NgForm }]
 })
 export class QuestionsSelectComponent implements OnInit {
-
-  // @ViewChild('btn')
-
-  isSelected = false;
+  @Output() selectedQuestions = new EventEmitter();
   questionsList: MatTableDataSource<Question>;
   displayedColumns: string[] = ['Content', 'Id', 'Show'];
-  selected: Question[] = [];//
+
   constructor(private questionsService: GetQuestionsService) { }
 
   ngOnInit() {
@@ -41,8 +38,9 @@ export class QuestionsSelectComponent implements OnInit {
     question.IsSelected = !question.IsSelected;
   }
 
-  onSubmit(){
-    return this.questionsList.data.filter(q=>q.IsSelected);
+  onSubmit() {
+    let s = this.questionsList.data.filter(q => q.IsSelected);
+    this.selectedQuestions.emit(s);
   }
 }
 

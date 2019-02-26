@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { TestModel } from '../../../Models/TestModel';
 import { GetTemplatesService } from 'src/app/Services/Test/get-templates.service';
+import { AddTestService } from 'src/app/Services/Test/add-test.service';
+import { template } from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-create-test',
@@ -8,20 +10,16 @@ import { GetTemplatesService } from 'src/app/Services/Test/get-templates.service
   styleUrls: ['./create-test.component.css']
 })
 export class CreateTestComponent implements OnInit {
-
-  //@ViewChild('test') test: any;
   @ViewChild('successTextArea') successText: ElementRef;
   @ViewChild('failureTextArea') failureText: ElementRef;
 
   languages = ['engliah', 'hebrew'];
   templates: string[] = [];
   certificates: any = ['gold', 'silver', 'copper'];
+  testModel = new TestModel(undefined, null, null, null,null, null, false, null, null, null, null
+    , null ,null, null, null, false);
 
-
-  testModel = new TestModel('456', 'en', 'lol', 'fsd', 'q2@d.d', 45, true, 'df', 'fd', 'fd', 'fd'
-    , 'fd', 'fd', 'fd', 456, false);
-
-  constructor(private templateService: GetTemplatesService) { }
+  constructor(private templateService: GetTemplatesService, private testService: AddTestService) { }
 
   ngOnInit() {
     this.templateService.get()
@@ -40,11 +38,12 @@ export class CreateTestComponent implements OnInit {
     }
   }
 
-  Submit(event) {
-    console.log(event);
+  Submit(test) {
+    console.log(test);
+    this.testService.post(test)
+      .subscribe(data => console.log(data)
+      , err => console.log(err));
   }
-
-
 }
 
 

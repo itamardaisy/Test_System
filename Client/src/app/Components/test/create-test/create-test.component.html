@@ -1,4 +1,4 @@
-<form #testForm="ngForm" (ngSubmit)="Submit($event)">
+<form #testForm="ngForm" (ngSubmit)="Submit(testForm.value)">
 
   <div>{{testForm.value | json}}</div>
   <!-- <div>{{testModel | json}}</div> -->
@@ -7,11 +7,11 @@
   <div class="testContainer">
     <div class=" testDetailsContainer halfPage">
       <h1>Genral test details</h1>
-        <!-- <div class="tableContainer"> -->
+      <!-- <div class="tableContainer"> -->
       <div>Field of study: <b>development</b></div>
 
       <mat-form-field>
-        <mat-select placeholder="Language" name="languages" [(ngModel)]="testModel.Language">
+        <mat-select placeholder="Language" name="languages" required [(ngModel)]="testModel.Language">
           <mat-option *ngFor="let language of languages" [value]="language">{{language}}</mat-option>
         </mat-select>
       </mat-form-field>
@@ -33,13 +33,11 @@
       </mat-form-field>
 
       <mat-form-field>
-        <textarea matInput placeholder="Text success" name="TextSuccess" [(ngModel)]="testModel.TextSuccess"
-          required></textarea>
+        <textarea matInput placeholder="Text success" name="TextSuccess" [(ngModel)]="testModel.TextSuccess"></textarea>
       </mat-form-field>
 
       <mat-form-field>
-        <textarea matInput placeholder="Text failure" name="TextFailure" [(ngModel)]="testModel.TextFailure"
-          required></textarea>
+        <textarea matInput placeholder="Text failure" name="TextFailure" [(ngModel)]="testModel.TextFailure"></textarea>
       </mat-form-field>
 
       <mat-form-field>
@@ -48,8 +46,8 @@
         </mat-select>
       </mat-form-field>
 
-    <!-- </div> -->
-  </div>
+      <!-- </div> -->
+    </div>
 
     <div class="testDetailsContainer halfPage">
       <h1>Email delivery upon test completion</h1>
@@ -70,12 +68,12 @@
 
       <mat-form-field>
         <input matInput placeholder="Subject success text" name="SubjectSuccessText"
-          [(ngModel)]="testModel.SubjectSuccessText" required>
+          [(ngModel)]="testModel.SubjectSuccessText">
       </mat-form-field>
 
       <mat-form-field>
         <textarea matInput placeholder="Subject success body" name="SubjectSuccessBody"
-          [(ngModel)]="testModel.SubjectSuccessBody" required #successTextArea></textarea>
+          [(ngModel)]="testModel.SubjectSuccessBody" #successTextArea></textarea>
       </mat-form-field>
 
       <b> Predefined templates - click to copy to clipboard</b>
@@ -89,12 +87,12 @@
 
       <mat-form-field>
         <input matInput placeholder="Subject failure text" name="SubjectSuccessText"
-          [(ngModel)]="testModel.SubjectSuccessText" required>
+          [(ngModel)]="testModel.SubjectSuccessText">
       </mat-form-field>
 
       <mat-form-field>
         <textarea matInput placeholder="Subject failure body" name="SubjectFailureBody"
-          [(ngModel)]="testModel.SubjectFailureBody" required #failureTextArea></textarea>
+          [(ngModel)]="testModel.SubjectFailureBody" #failureTextArea></textarea>
       </mat-form-field>
 
       <b> Predefined templates - click to copy to clipboard</b>
@@ -109,9 +107,9 @@
     </div>
   </div>
   <div class="testDetailsContainer">
-      <app-questions-select></app-questions-select>
+    <app-questions-select (selectedQuestions)="Submit($event)"></app-questions-select>
   </div>
-  <input type="submit" value="Submit"/>
+  <button type="submit" mat-raised-button color="accent" [disabled]="!testForm.valid">Submit</button>
 </form>
 
 <div>end</div>

@@ -8,7 +8,8 @@ export const environment = {
     questionUrl: '/test/getQuestionsByCategory',
     registerUrl: '/admin/register',
     loginUrl: '/admin/login',
-    templateUrl: '/test/getPredefinedTemplates'
+    templateUrl: '/test/getPredefinedTemplates',
+    addTestUrl:'/test/addTest'
 
 };
 
