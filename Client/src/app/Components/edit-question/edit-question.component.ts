@@ -5,6 +5,7 @@ import { QuestionService } from 'src/app/Services/Question/question.service';
 import { MatRadioChange } from '@angular/material';
 import { EQuestionType as eqt } from '../../Enums/EQuestionType';
 import Question from 'src/app/Models/Question';
+import { IfStmt } from '@angular/compiler';
 
 @Component({
     selector: 'app-edit-question',
@@ -22,14 +23,23 @@ export class EditQuestionComponent implements OnInit {
     public _questionHasNotSaved: boolean;
     public _answersNotEmpty: boolean;
     public _success: boolean;
-    public _isSingleChois: boolean;
-    public _numOfSelected = 0;
+    public _selectedCounter = 0;
 
-    // view child
+    // Selection options
+    public option1 = 'Single answer question';
+    public option2 = 'Multiple answers question';
 
     constructor(private questionService: QuestionService) {}
 
-    ngOnInit() {}
+    ngOnInit() {
+        this.question.Answers = new Array<Answer>(2);
+        this.question.Content = '';
+        this.question.IsActive = true;
+        this.question.IsHorizontal = false;
+        this.question.IsMultiple = false;
+        this.question.Tags = '';
+        this.question.TextBelow = '';
+    }
 
     public addQuestion() {
         if (this.answers.length === 0) {
@@ -39,7 +49,17 @@ export class EditQuestionComponent implements OnInit {
         this.answers.push(new Answer('', false));
     }
 
+    public removeQuestion(index: number) {
+        this.answers.splice(index, 1);
+    }
+
     public save() {
+        if (!this.checkAnswer()) {
+          this._textEmpty = true;
+          return;
+        } else {
+        alert('r');
+        this._textEmpty = false;
         console.log('save button has clicked');
         const observable = this.questionService.saveQuestion(this.question);
         observable.subscribe(response => {
@@ -54,10 +74,19 @@ export class EditQuestionComponent implements OnInit {
         }, () => {
             console.log('Done');
         });
+      }
     }
 
-    public do() {
-        alert('has changed');
+    private checkAnswer() {
+      if (this.answers.length < 2) {
+        return false;
+      }
+      this.answers.forEach(answer => {
+        if (answer.Text === '') {
+          return false;
+        }
+      });
+      return true;
     }
 
     public saveAnswers() {
@@ -69,8 +98,26 @@ export class EditQuestionComponent implements OnInit {
     }
 
     public setNumOfSelected() {
-        alert(this._numOfSelected.toString());
-        this._numOfSelected++;
-        alert(this._numOfSelected.toString());
+        alert(`${this._selectedCounter.toString()} set num of selected`);
+        this._selectedCounter++;
+        alert(this._selectedCounter.toString());
+    }
+
+    public changeState(event) {
+        console.log('Change the question Type');
+        if (event.target.value === this.option1) {
+            this.question.IsMultiple = false;
+        } else {
+            this.question.IsMultiple = true;
+        }
+    }
+
+    public changeHorizontal(event) {
+        console.log('Change the question Type');
+        if (event.target.value === 'Horizontal') {
+            this.question.IsHorizontal = true;
+        } else {
+            this.question.IsHorizontal = false;
+        }
     }
 }
