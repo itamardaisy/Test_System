@@ -30,11 +30,23 @@ testRouter.get('/getQuestionsByCategory', (req, res) => {
 testRouter.get('/getPredefinedTemplates', (req, res) => {
     //res.status(200).json({ message: 'Connected!' });
     console.log('lll');
-    res.send( templates);
+    res.send(templates);
 });
 
 testRouter.post('/addTest', (req, res) => {
-    console.log(req, req.body);
+   // let categoryId = 1; //TODO
+    let test = req.body.testDetails;
+    let questions = req.body.testQuestions;
+    
+    repository.excecuteProcedureDB3333(test, questions);
+    console.log(test, questions);
 })
+
+testRouter.get('/t', (req, res) => {
+    //res.status(200).json({ message: 'Connected!' });
+    console.log('in test' + new Date());
+
+    // repository.excecuteProcedureDB2222(data => console.log(data));
+});
 
 module.exports = testRouter;

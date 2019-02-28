@@ -26,7 +26,6 @@ export class QuestionsSelectComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.questionsList.filter = filterValue.trim().toLowerCase();
-
   }
 
   test(event) {
@@ -39,8 +38,10 @@ export class QuestionsSelectComponent implements OnInit {
   }
 
   onSubmit() {
-    let s = this.questionsList.data.filter(q => q.IsSelected);
-    this.selectedQuestions.emit(s);
+    let questionsId = this.questionsList.data
+      .filter(q => q.IsSelected)
+      .map(qu => qu.Id);
+    this.selectedQuestions.emit(questionsId);
   }
 }
 

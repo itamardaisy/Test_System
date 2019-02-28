@@ -12,7 +12,7 @@ export class AddTestService {
 
   constructor(private http: HttpClient) { }
 
-  post(test: TestModel): Observable<any> {
+  post(test): Observable<any> {
     return this.http.post(env.baseUrl + env.addTestUrl, test);
   }
 }

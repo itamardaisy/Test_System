@@ -44,8 +44,10 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr style="cursor: pointer" [class.selected]="row.IsSelected"
       (click)="onSelect(row)" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
   </table>
+
+  <button type="submit" mat-raised-button color="accent" (click)="onSubmit()">Submit questins</button>
+  
 </div>
 
 

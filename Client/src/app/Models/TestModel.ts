@@ -1,6 +1,6 @@
 export class TestModel {
     constructor(
-        public Id: string,
+        // public Id: string,
         public Language: string,
         public Name: string,
         public HeaderContent: string,

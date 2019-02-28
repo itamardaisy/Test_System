@@ -13,11 +13,12 @@ export class CreateTestComponent implements OnInit {
   @ViewChild('successTextArea') successText: ElementRef;
   @ViewChild('failureTextArea') failureText: ElementRef;
 
-  languages = ['engliah', 'hebrew'];
+  languages = ['english', 'hebrew'];
+  selectedQuestinos = [];
   templates: string[] = [];
   certificates: any = ['gold', 'silver', 'copper'];
-  testModel = new TestModel(undefined, null, null, null,null, null, false, null, null, null, null
-    , null ,null, null, null, false);
+  testModel = new TestModel(null, null, null, null, null, false, null, null, null, null
+    , null, null, null, null, false);
 
   constructor(private templateService: GetTemplatesService, private testService: AddTestService) { }
 
@@ -38,11 +39,18 @@ export class CreateTestComponent implements OnInit {
     }
   }
 
-  Submit(test) {
-    console.log(test);
+  getQuestions(ev) {
+    this.selectedQuestinos = ev;
+  }
+
+  Submit(testform: TestModel) {
+    console.log(testform);
+    testform.CategoryId = 1;
+    let test = { testDetails: testform, testQuestions: this.selectedQuestinos };
+
     this.testService.post(test)
       .subscribe(data => console.log(data)
-      , err => console.log(err));
+        , err => console.log(err));
   }
 }
 
