@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Admin } from 'src/app/Models/AdminUser';
 import { RegisterService } from 'src/app/Services/Register/register.service';
-import { EStatusCode as esc } from '../../Enums/EStatusCodes';
+import { StatusCodesEnum as esc } from '../../Enums/StatusCodesEnum';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({

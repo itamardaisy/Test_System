@@ -1,0 +1,35 @@
+<div class="col-25">
+    <label for="answer_list">Answers:</label>
+</div>
+<div class="col-75">
+    <mat-list #answer_list>
+        <mat-list-item *ngFor="let answer of question.Answers; let i = index" class="answers-div">
+            <button (click)="removeQuestion(i)">X</button>
+            <section>
+                <textarea placeholder="Answer content" [(ngModel)]="answer.Text" 
+                          style="height:40px; width: 950px;" [ngModelOptions]="{standalone: true}"></textarea>
+            </section>
+            <ng-container *ngIf="!question.IsMultiple; else elseTemplate">
+                <section class="example-section">
+                    <label #radio>Is Correct
+                        <input type="radio" (change)="onSelectionChange(answer)" name="radioAnswer" />
+                    </label>
+                </section>
+            </ng-container>
+            <ng-template #elseTemplate>
+                <section class="example-section">
+                    <label>
+                        Is Correct
+                        <input type="checkbox" name="checkAnswer" />
+                    </label>
+                </section>
+            </ng-template>
+        </mat-list-item>
+    </mat-list>
+</div>
+<input type="button" (click)="addQuestion($event)" value="Add an answer" />
+<div *ngIf="textEmpty">
+    <div class="alert alert-danger">
+        <strong>Cannot save.</strong> some of your question content are empty.
+    </div>
+</div>

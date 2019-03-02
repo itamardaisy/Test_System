@@ -6,8 +6,7 @@
             </div>
             <div class="col-75">
                 <select (change)="changeState($event)">
-                    <option>{{option1}}</option>
-                    <option>{{option2}}</option>
+                    <option *ngFor="let option of options">{{option.displayText}}</option>
                 </select>
             </div>
         </div>
@@ -16,8 +15,8 @@
                 <label for="ques_text">Question Text:</label>
             </div>
             <div class="col-75">
-                <textarea [(ngModel)]="question.Content" placeholder="Question Text" id="ques_text" style="height:100px"
-                    [ngModelOptions]="{standalone: true}"></textarea>
+                <textarea [(ngModel)]="question.Content" [ngModelOptions]="{standalone: true}" placeholder="Question Text" 
+                          id="ques_text" style="height:100px"></textarea>
             </div>
         </div>
         <div class="row">
@@ -25,59 +24,24 @@
                 <label for="text_below_ques">Text blow question:</label>
             </div>
             <div class="col-75">
-                <textarea [(ngModel)]="question.TextBelow" placeholder="Text blow question" [ngModelOptions]="{standalone: true}" id="text_below_ques"
-                    name="subject" style="height:150px"></textarea>
+                <textarea [(ngModel)]="question.TextBelow" [ngModelOptions]="{standalone: true}" placeholder="Text blow question"
+                          id="text_below_ques" style="height:150px"></textarea>
             </div>
         </div>
         <div class="row">
             <div class="col-25">
                 <label for="tag_text">
-                  Tag:
+                    Tag:
                 </label>
             </div>
             <div class="col-75">
-                <input type="text" placeholder="Tag text" [ngModelOptions]="{standalone: true}" [(ngModel)]="question.Tags">
+                <input type="text" placeholder="Tag text" [ngModelOptions]="{standalone: true}"
+                    [(ngModel)]="question.Tags">
             </div>
         </div>
         <hr>
+        <app-answer [question]="question"></app-answer>
         <div class="row">
-            <div *ngIf="question.Answers.length !== 0">
-                <div class="col-25">
-                    <label for="answer_list">Answers:</label>
-                </div>
-                <div class="col-75">
-                    <mat-list #answer_list>
-                        <mat-list-item *ngFor="let answer of answers; let i = index" class="answers-div">
-                            <button (click)="removeQuestion(i)">X</button>
-                            <section>
-                                <textarea placeholder="Answer content" [(ngModel)]="answer.Text"
-                                    style="height:40px; width: 500px;" [ngModelOptions]="{standalone: true}">
-                                </textarea>
-                            </section>
-                            <ng-container *ngIf="!question.IsMultiple else elseTemplate">
-                                <section class="example-section">
-                                    <label> Is Correct
-                                        <input type="radio" name="radioAnswer">
-                                    </label>
-                                </section>
-                            </ng-container>
-                            <ng-template #elseTemplate>
-                                <section class="example-section">
-                                    <label> Is Correct
-                                        <input type="checkbox" name="checkAnswer">
-                                    </label>
-                                </section>
-                            </ng-template>
-                        </mat-list-item>
-                    </mat-list>
-                </div>
-            </div>
-            <button (click)="addQuestion()">Add an answer</button>
-            <div *ngIf="_textEmpty">
-                <div class="alert alert-danger">
-                    <strong>Cannot save.</strong> some of your question content are empty.
-                </div>
-            </div>
             <button type="submit">Save</button>
         </div>
         <div class="row">

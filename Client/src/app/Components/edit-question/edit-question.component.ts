@@ -1,11 +1,10 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Answer } from 'src/app/Models/Answer';
-import { EStatusCode as esc } from '../../Enums/EStatusCodes';
+import { StatusCodesEnum as StatusCode } from '../../Enums/StatusCodesEnum';
 import { QuestionService } from 'src/app/Services/Question/question.service';
-import { MatRadioChange } from '@angular/material';
-import { EQuestionType as eqt } from '../../Enums/EQuestionType';
-import Question from 'src/app/Models/Question';
-import { IfStmt } from '@angular/compiler';
+import { Question } from 'src/app/Models/Question';
+import { FormGroup } from '@angular/forms';
+import { Option } from 'src/app/Models/dropdownOptions';
 
 @Component({
     selector: 'app-edit-question',
@@ -14,98 +13,70 @@ import { IfStmt } from '@angular/compiler';
 })
 export class EditQuestionComponent implements OnInit {
     // Models for binding.
-    public selectedOptions = 'Single answer question';
-    public question = new Question();
-    public answers: Answer[] = new Array();
+    question = new Question();
 
     // Booleans for the message indications.
-    public _textEmpty: boolean;
-    public _questionHasNotSaved: boolean;
-    public _answersNotEmpty: boolean;
-    public _success: boolean;
-    public _selectedCounter = 0;
+    isTextEmpty: boolean;
+    isQuestionHasNotSaved: boolean;
+    isAnswersNotEmpty: boolean;
+    isSuccess: boolean;
+
+    selectedCounter = 0;
 
     // Selection options
-    public option1 = 'Single answer question';
-    public option2 = 'Multiple answers question';
+    options: Option[] = [
+        {displayText: 'Single answer question' , value: 'Single'},
+        {displayText: 'Multiple answers question', value: 'multiple'}
+    ];
 
-    constructor(private questionService: QuestionService) {}
+    constructor(private questionService: QuestionService) { }
 
-    ngOnInit() {
-        this.question.Answers = new Array<Answer>(2);
-        this.question.Content = '';
-        this.question.IsActive = true;
-        this.question.IsHorizontal = false;
-        this.question.IsMultiple = false;
-        this.question.Tags = '';
-        this.question.TextBelow = '';
-    }
-
-    public addQuestion() {
-        if (this.answers.length === 0) {
-            this._answersNotEmpty = true;
-        }
-        const numOfQuestions = this.answers.length + 1;
-        this.answers.push(new Answer('', false));
-    }
-
-    public removeQuestion(index: number) {
-        this.answers.splice(index, 1);
-    }
+    ngOnInit() {}
 
     public save() {
+        debugger;
         if (!this.checkAnswer()) {
-          this._textEmpty = true;
-          return;
+            this.isTextEmpty = true;
+            return;
         } else {
-        alert('r');
-        this._textEmpty = false;
-        console.log('save button has clicked');
-        const observable = this.questionService.saveQuestion(this.question);
-        observable.subscribe(response => {
-            if (response === esc.success) {
-                console.log(response);
-                this._success = true;
-            } else {
-                // TODO
-            }
-        }, error => {
-            console.log(error);
-        }, () => {
-            console.log('Done');
-        });
-      }
+            this.isTextEmpty = false;
+            const observable = this.questionService.saveQuestion(this.question);
+            observable.subscribe(response => {
+                if (response === StatusCode.success) {
+                    console.log(response);
+                    this.isSuccess = true;
+                } else {
+                    // TODO
+                }
+            }, error => {
+                console.log(error);
+            }, () => {
+                console.log('Done');
+            });
+        }
     }
 
     private checkAnswer() {
-      if (this.answers.length < 2) {
-        return false;
-      }
-      this.answers.forEach(answer => {
-        if (answer.Text === '') {
-          return false;
+        if (this.question.Answers.length < 2) {
+            return false;
         }
-      });
-      return true;
-    }
-
-    public saveAnswers() {
-        this.answers.forEach(element => {
-            if (element.IsCorrect) {
-                alert(element.Text);
+        this.question.Answers.forEach(answer => {
+            if (answer.Text === '') {
+                return false;
             }
         });
+        return true;
     }
 
     public setNumOfSelected() {
-        alert(`${this._selectedCounter.toString()} set num of selected`);
-        this._selectedCounter++;
-        alert(this._selectedCounter.toString());
+        alert(`${this.selectedCounter.toString()} set num of selected`);
+        this.selectedCounter++;
+        alert(this.selectedCounter.toString());
     }
 
     public changeState(event) {
         console.log('Change the question Type');
-        if (event.target.value === this.option1) {
+        if (event.target.value === this.options[0].displayText) {
             this.question.IsMultiple = false;
         } else {
             this.question.IsMultiple = true;

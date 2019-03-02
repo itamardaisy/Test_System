@@ -23,6 +23,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatListModule } from '@angular/material/list';
 import {MatRadioModule} from '@angular/material/radio';
 import { CreateTestComponent } from './Components/test/create-test/create-test.component';
+import { AnswerComponent } from './Components/edit-question/answer/answer.component';
 
 
 const appRoutes: Routes = [
@@ -45,7 +46,8 @@ const appRoutes: Routes = [
         QuestionsSelectComponent,
         ResetPasswordComponent,
         EditQuestionComponent,
-        CreateTestComponent
+        CreateTestComponent,
+        AnswerComponent
     ],
     imports: [
         BrowserModule,

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GetQuestionsService } from '../../../Services/Test/get-questions.service';
-import Question from 'src/app/Models/Question';
+import { Question } from 'src/app/Models/Question';
 import { ControlContainer, NgForm } from '@angular/forms';
 
 @Component({

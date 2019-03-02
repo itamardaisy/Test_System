@@ -1,4 +1,4 @@
-export enum EStatusCode {
+export enum StatusCodesEnum {
     success = 0,
     userNotExist = 1,
     usernameExist = 2,
