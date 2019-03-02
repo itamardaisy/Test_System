@@ -15,8 +15,8 @@
                 <label for="ques_text">Question Text:</label>
             </div>
             <div class="col-75">
-                <textarea [(ngModel)]="question.Content" [ngModelOptions]="{standalone: true}" placeholder="Question Text" 
-                          id="ques_text" style="height:100px"></textarea>
+                <textarea [(ngModel)]="question.Content" [ngModelOptions]="{standalone: true}"
+                    placeholder="Question Text" id="ques_text" style="height:100px"></textarea>
             </div>
         </div>
         <div class="row">
@@ -24,8 +24,8 @@
                 <label for="text_below_ques">Text blow question:</label>
             </div>
             <div class="col-75">
-                <textarea [(ngModel)]="question.TextBelow" [ngModelOptions]="{standalone: true}" placeholder="Text blow question"
-                          id="text_below_ques" style="height:150px"></textarea>
+                <textarea [(ngModel)]="question.TextBelow" [ngModelOptions]="{standalone: true}"
+                    placeholder="Text blow question" id="text_below_ques" style="height:150px"></textarea>
             </div>
         </div>
         <div class="row">
@@ -42,9 +42,6 @@
         <hr>
         <app-answer [question]="question"></app-answer>
         <div class="row">
-            <button type="submit">Save</button>
-        </div>
-        <div class="row">
             <div class="col-25">
                 <label> Horizontal
                     <input type="radio" name="h_v" value="Horizontal" (click)="changeHorizontal($event)">
@@ -53,6 +50,9 @@
                     <input type="radio" name="h_v" value="Vertical" (click)="changeHorizontal($event)">
                 </label>
             </div>
+        </div>
+        <div class="row">
+            <button type="submit">Save</button>
         </div>
     </form>
 </div>

@@ -19,8 +19,7 @@ router.post('/saveQuestion', (req, res) => {
     });
 });
 
-
-
 function addAnswers(req) {
     const {} =  req.body;
 }
+module.exports = router;

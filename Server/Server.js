@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
   
 app.use('/admin', admin)        // Admin Routes
-app.use('/test', test);         // Test Routes
+app.use('/test', test);         // Test Routes  
 app.use('/question', question)  // Question Routes
 
 const port = process.env.PORT || 3000;

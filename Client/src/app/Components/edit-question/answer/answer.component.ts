@@ -39,20 +39,30 @@ export class AnswerComponent implements OnInit {
     }
 
     onSelectionChange(chossenAnswer) {
-        this.question.Answers.forEach(answer => {
-            if (answer.Text === chossenAnswer.Text) {
-                answer.IsCorrect = true;
-            } else {
-                answer.IsCorrect = false;
-            }
-        });
+        if (chossenAnswer.Text !== '') {
+            this.textEmpty = false;
+            this.question.Answers.forEach(answer => {
+                if (answer.Text === chossenAnswer.Text) {
+                    answer.IsCorrect = true;
+                } else {
+                    answer.IsCorrect = false;
+                }
+            });
+        } else {
+            this.textEmpty = true;
+        }
     }
 
-    saveAnswers() {
-        this.question.Answers.forEach(answer => {
-            if (answer.IsCorrect) {
-                alert(answer.Text);
-            }
-        });
+    onCheckedChange(event, clickedAnswer) {
+        if (clickedAnswer.Text !== '') {
+            this.textEmpty = false;
+            this.question.Answers.forEach(answer => {
+                if (answer.Text === clickedAnswer.Text) {
+                    answer.IsCorrect = event.target.checked;
+                }
+            });
+        } else {
+            this.textEmpty = true;
+        }
     }
 }
