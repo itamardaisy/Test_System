@@ -11,8 +11,8 @@ export class QuestionService {
 
     constructor(private http: HttpClient) { }
 
-    public getQuestionEdit(): Observable<QuestionEdit[]> {
-        return this.http.get<QuestionEdit[]>('http://localhost:3000/test/getQuestionByEdit');
+    public getQuestions(): Observable<any> {
+        return this.http.get<any>('http://localhost:3000/question/getQuestions');
     }
 
     public saveQuestion(question: Question): Observable<any> {
