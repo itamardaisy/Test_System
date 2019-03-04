@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QuestionService } from 'src/app/Services/Question/question.service';
 import { QuestionEdit } from 'src/app/Models/QuestionEdit';
-import { disableBindings } from '@angular/core/src/render3';
 
 export interface QuestionElement {
     Id: string;
