@@ -107,7 +107,7 @@
     </div>
   </div>
   <div class="testDetailsContainer">
-    <app-questions-select (selectedQuestions)="getQuestions($event)"></app-questions-select>
+    <app-questions-select [questions]="testModel.Questions" (selectedQuestions)="getQuestions($event)"></app-questions-select>
   </div>
   <button type="submit" mat-raised-button color="accent" [disabled]="!testForm.valid">Submit</button>
 </form>

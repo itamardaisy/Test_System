@@ -3,6 +3,7 @@ import { TestModel } from '../../../Models/TestModel';
 import { GetTemplatesService } from 'src/app/Services/Test/get-templates.service';
 import { AddTestService } from 'src/app/Services/Test/add-test.service';
 import { template } from '@angular/core/src/render3';
+import { GetQuestionsService } from 'src/app/Services/Test/get-questions.service';
 
 @Component({
   selector: 'app-create-test',
@@ -17,15 +18,20 @@ export class CreateTestComponent implements OnInit {
   selectedQuestinos = [];
   templates: string[] = [];
   certificates: any = ['gold', 'silver', 'copper'];
-  testModel = new TestModel(null, null, null, null, null, false, null, null, null, null
-    , null, null, null, null, false);
+  testModel = new TestModel();
 
-  constructor(private templateService: GetTemplatesService, private testService: AddTestService) { }
+  constructor(private questionsService: GetQuestionsService
+    , private templateService: GetTemplatesService, private testService: AddTestService) { }
 
   ngOnInit() {
     this.templateService.get()
       .subscribe(data => {
         this.templates = data;
+      }, err => alert(err));
+
+      this.questionsService.get()
+      .subscribe(data => {
+        this.testModel.Questions = data.data[0];
       }, err => alert(err));
   }
 

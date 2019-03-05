@@ -38,15 +38,13 @@ testRouter.post('/addTest', (req, res) => {
     let test = req.body.testDetails;
     let questions = req.body.testQuestions;
     
-    repository.excecuteProcedureDB3333(test, questions);
+    repository.procedureCreateTest(test, questions);
     console.log(test, questions);
 })
 
 testRouter.get('/t', (req, res) => {
     //res.status(200).json({ message: 'Connected!' });
     console.log('in test' + new Date());
-
-    // repository.excecuteProcedureDB2222(data => console.log(data));
 });
 
 module.exports = testRouter;
