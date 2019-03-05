@@ -28,6 +28,10 @@ export class QuestionManagerComponent implements OnInit {
 
     // On initialize the component the dataSource will be filled with the questions.
     ngOnInit() {
+        this.fillData();
+    }
+
+    fillData() {
         this.questionService.getQuestions().subscribe((res) => {
             this.dataSource = res.data[0];
         });

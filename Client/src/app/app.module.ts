@@ -28,10 +28,10 @@ import { AnswerComponent } from './Components/edit-question/answer/answer.compon
 
 const appRoutes: Routes = [
     { path: 'Register', component: RegisterComponent },
+    { path: 'Home', component: HomeComponent},
     { path: 'QuestionManager', component: QuestionManagerComponent },
     { path: 'Login', component: LoginComponent },
     { path: 'SelectQuestions', component: QuestionsSelectComponent },
-    { path: 'QuestionManager', component: QuestionManagerComponent },
     { path: 'EditQuestion', component: EditQuestionComponent }
 ];
 

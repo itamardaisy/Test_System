@@ -22,6 +22,7 @@ export class EditQuestionComponent implements OnInit {
     isSuccess: boolean;
 
     selectedCounter = 0;
+    studyField: string;
 
     // Selection options
     options: Option[] = [
@@ -31,7 +32,9 @@ export class EditQuestionComponent implements OnInit {
 
     constructor(private questionService: QuestionService) { }
 
-    ngOnInit() {}
+    ngOnInit() {
+        this.studyField = localStorage['Study field'];
+    }
 
     public save() {
         debugger;
@@ -75,7 +78,7 @@ export class EditQuestionComponent implements OnInit {
     }
 
     public changeState(event) {
-        console.log('Change the question Type');
+        alert(event.target.value);
         if (event.target.value === this.options[0].displayText) {
             this.question.IsMultiple = false;
         } else {

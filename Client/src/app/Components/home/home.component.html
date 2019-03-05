@@ -1,1 +1,12 @@
-<app-question-manager></app-question-manager>
+<div class="container">
+    <div class="center-main">
+        <label> Choose a field of study:
+            <select (change)="changeState($event)">
+                <option *ngFor="let field of fields">{{field}}</option>
+            </select>
+        </label>
+        <button routerLink="/QuestionManager" routerLinkActive="active">Manage Questions</button>
+        <button routerLink="/QuestionManager" routerLinkActive="active">Manage Tests</button>
+        <button routerLink="/QuestionManager" routerLinkActive="active">Reports</button>
+    </div>
+</div>

@@ -2,6 +2,14 @@
     <form (ngSubmit)='save()' role="form">
         <div class="row">
             <div class="col-25">
+                <label for="study_field">Question subject:</label>
+            </div>
+            <div class="col-75">
+                <span #study_field>{{studyField}}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
                 <label for="fname">Question Type:</label>
             </div>
             <div class="col-75">
