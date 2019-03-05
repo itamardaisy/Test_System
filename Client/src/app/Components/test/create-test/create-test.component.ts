@@ -4,7 +4,6 @@ import { GetTemplatesService } from 'src/app/Services/Test/get-templates.service
 import { AddTestService } from 'src/app/Services/Test/add-test.service';
 import { template } from '@angular/core/src/render3';
 import { GetQuestionsService } from 'src/app/Services/Test/get-questions.service';
-import { TestDTO } from '../../../Models/TestDTO';
 
 @Component({
   selector: 'app-create-test',
@@ -69,7 +68,7 @@ export class CreateTestComponent implements OnInit {
     delete testform.Questions;
     const test = { testDetails: testform, testQuestions: selected };
 
-    //todo: min selelcted questions
+    //todo: min selelcted questions //ngx-toastr?
     return test;
   }
 }
