@@ -1,0 +1,69 @@
+ .testContainer {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+ }
+
+ .halfPage{
+    flex: 1 1 0;
+ }
+
+ .testDetailsContainer {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(245, 238, 238);
+    border: 1px soild rgb(240, 235, 235);
+    box-sizing: border-box;
+    box-shadow: 1px 1px black;
+    border-radius: 10px;
+    min-width: 300px;
+  }
+
+  .testDetailsContainer > div, .testDetailsContainer > mat-form-field {
+    padding: 2%;
+  }
+  
+  .testDetailsContainer > * {
+    margin: 2px 0;
+  }
+
+  .template{
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .template input {
+    font-size:10px;
+    background-color:rgb(245, 238, 238); 
+    border-width: 0;
+  } 
+  
+  .boundaryLine {
+    background-color: rgb(216, 209, 209);
+    widows: 100%;
+    margin: 2px 0; 
+    
+  }
+  .boundaryLine > *{
+    margin: 2px 0;
+  }
+
+  .on{
+    color: rgb(25, 241, 25);
+  }
+
+  .off{
+    color: red;
+  }
+
+  .emeilArea > * {
+    margin: 1%;
+  }
+
+  
+  /* .template input:focus{
+    outline: none;
+  }  */
+
+

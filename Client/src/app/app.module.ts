@@ -7,16 +7,32 @@ import { LoginComponent } from './Components/login/login.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { QuestionManagerComponent } from './Components/question-manager/question-manager.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
+import { QuestionsSelectComponent } from './Components/test/questions-select/questions-select.component';
+import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
+import { EditQuestionComponent } from './Components/edit-question/edit-question.component';
+
 import { HttpClientModule } from '@angular/common/http';
-import { MatTableModule } from '@angular/material';
+import { MatTableModule, MatInputModule } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatListModule } from '@angular/material/list';
+import {MatRadioModule} from '@angular/material/radio';
+import { CreateTestComponent } from './Components/test/create-test/create-test.component';
+import { AnswerComponent } from './Components/edit-question/answer/answer.component';
+
 
 const appRoutes: Routes = [
-    { path: 'Login', component: LoginComponent },
     { path: 'Register', component: RegisterComponent },
+    { path: 'Home', component: HomeComponent},
     { path: 'QuestionManager', component: QuestionManagerComponent },
     { path: 'Login', component: LoginComponent },
+    { path: 'SelectQuestions', component: QuestionsSelectComponent },
+    { path: 'EditQuestion', component: EditQuestionComponent }
 ];
 
 @NgModule({
@@ -26,13 +42,25 @@ const appRoutes: Routes = [
         LoginComponent,
         RegisterComponent,
         QuestionManagerComponent,
-        NavbarComponent
+        NavbarComponent,
+        QuestionsSelectComponent,
+        ResetPasswordComponent,
+        EditQuestionComponent,
+        CreateTestComponent,
+        AnswerComponent
     ],
     imports: [
         BrowserModule,
         FormsModule,
         HttpClientModule,
         MatTableModule,
+        BrowserAnimationsModule,
+        MatListModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatCheckboxModule,
+        MatRadioModule,
         RouterModule.forRoot(
             appRoutes,
             { enableTracing: true }

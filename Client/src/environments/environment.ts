@@ -5,9 +5,11 @@
 export const environment = {
     production: false,
     baseUrl: 'http://localhost:3000',
-    questionUrl: '/test/getQuestionsByCaegory',
+    questionUrl: '/test/getQuestionsByCategory',
     registerUrl: '/admin/register',
-    loginUrl: '/admin/login'
+    loginUrl: '/admin/login',
+    templateUrl: '/test/getPredefinedTemplates'
+
 };
 
 /*

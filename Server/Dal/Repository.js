@@ -8,11 +8,12 @@ const dbPool = new sql.ConnectionPool(config, err => {
 });
 
 class DBContext {
-
+    
     // This function is to execute a given procedure. 
     excecuteProcedureDB(procedureName, sqlParams, callBack) {
         var req = dbPool.request();
         sqlParams.forEach(p => {
+            console.log(p.paramName);
             req.input(p.paramName, p.sqlType, p.value);
         });
         req.execute(procedureName, (err, data) => {

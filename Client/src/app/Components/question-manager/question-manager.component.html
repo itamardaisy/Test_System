@@ -1,36 +1,42 @@
-<mat-table [dataSource]='dataSource'>
+<div class="example-container">
+    <mat-table [dataSource]='dataSource'>
 
-    <ng-container matColumnDef="ID">
-        <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
-        <mat-cell *matCellDef="let questionEdit">{{questionEdit.Id}}</mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="Id">
+            <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+            <mat-cell *matCellDef="let questionEdit">{{questionEdit.Id}}</mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="Text&Tags">
-        <mat-header-cell *matHeaderCellDef>Question text and Tags</mat-header-cell>
-        <mat-cell *matCellDef="let questionEdit">{{questionEdit.Tags}}</mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="IsMultiple">
+            <mat-header-cell *matHeaderCellDef>Question text and Tags</mat-header-cell>
+            <mat-cell *matCellDef="let questionEdit">{{questionEdit.IsMultiple}}</mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="LastUpdate">
-        <mat-header-cell *matHeaderCellDef>Last update</mat-header-cell>
-        <mat-cell *matCellDef="let questionEdit">{{questionEdit.LastUpdate}}</mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="Content">
+            <mat-header-cell *matHeaderCellDef>Last update</mat-header-cell>
+            <mat-cell *matCellDef="let questionEdit">{{questionEdit.Content}}</mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="QuestionType">
-        <mat-header-cell *matHeaderCellDef>Question type</mat-header-cell>
-        <mat-cell *matCellDef="let questionEdit">{{questionEdit.QuestionType}}</mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="IsHorizontal">
+            <mat-header-cell *matHeaderCellDef>Question type</mat-header-cell>
+            <mat-cell *matCellDef="let questionEdit">{{questionEdit.IsHorizontal}}</mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="OfTest">
-        <mat-header-cell *matHeaderCellDef>#of Test</mat-header-cell>
-        <mat-cell *matCellDef="let questionEdit"><a>{{questionEdit.TestId}}</a></mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="Tags">
+            <mat-header-cell *matHeaderCellDef>#of Test</mat-header-cell>
+            <mat-cell *matCellDef="let questionEdit"><a>{{questionEdit.Tags}}</a></mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="Actions">
-        <mat-header-cell *matHeaderCellDef> </mat-header-cell>
-        <mat-cell *matCellDef="let questionEdit"><a>{{questionEdit.TestId}}</a></mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="Actions">
+            <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+            <mat-cell *matCellDef="let questionEdit"><a>{{questionEdit.Actions}}</a></mat-cell>
+        </ng-container>
 
-    <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: tableColumns"></mat-row>
+        <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: tableColumns"></mat-row>
 
-</mat-table>
+    </mat-table>
+</div>
+<div class="footer-buttons">
+    <button routerLink="/EditQuestion" routerLinkActive="active">Back</button>
+    <button routerLink="/EditQuestion" routerLinkActive="active">New Question</button>
+</div>
