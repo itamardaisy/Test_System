@@ -10,7 +10,7 @@ import { environment as env } from '../../../environments/environment';
 export class RegisterService {
 
     constructor(private http: HttpClient) { }
-    public register(newAdmin: Admin): Observable<any> {
-        return this.http.post<any>(env.baseUrl + env.registerUrl, newAdmin);
+    public register(newAdmin: Admin): Observable<Admin> {
+        return this.http.post<Admin>(env.baseUrl + env.registerUrl, newAdmin);
     }
 }
