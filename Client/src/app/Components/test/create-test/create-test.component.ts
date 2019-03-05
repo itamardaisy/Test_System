@@ -4,6 +4,7 @@ import { GetTemplatesService } from 'src/app/Services/Test/get-templates.service
 import { AddTestService } from 'src/app/Services/Test/add-test.service';
 import { template } from '@angular/core/src/render3';
 import { GetQuestionsService } from 'src/app/Services/Test/get-questions.service';
+import { TestDTO } from '../../../Models/TestDTO';
 
 @Component({
   selector: 'app-create-test',
@@ -29,7 +30,7 @@ export class CreateTestComponent implements OnInit {
         this.templates = data;
       }, err => alert(err));
 
-      this.questionsService.get()
+    this.questionsService.get()
       .subscribe(data => {
         this.testModel.Questions = data.data[0];
       }, err => alert(err));
@@ -51,12 +52,25 @@ export class CreateTestComponent implements OnInit {
 
   Submit(testform: TestModel) {
     console.log(testform);
-    testform.CategoryId = 1;
-    let test = { testDetails: testform, testQuestions: this.selectedQuestinos };
+    const test = this.prepareTest(testform);
 
     this.testService.post(test)
       .subscribe(data => console.log(data)
         , err => console.log(err));
+  }
+
+  prepareTest(testform: TestModel) {
+    testform.CategoryId = 1; //todo
+  
+    let selected = testform.Questions
+      .filter(q => q.IsSelected === true)
+      .map(q => q.Id);
+
+    delete testform.Questions;
+    const test = { testDetails: testform, testQuestions: selected };
+
+    //todo: min selelcted questions
+    return test;
   }
 }
 

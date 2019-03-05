@@ -12,33 +12,23 @@ import { getSupportedInputTypes } from '@angular/cdk/platform';
   viewProviders: [{ provide: ControlContainer, useExisting: NgForm }]
 })
 export class QuestionsSelectComponent implements OnInit {
+  questionsList: MatTableDataSource<Question>;
+  displayedColumns: string[] = ['Content', 'Id', 'Show'];
+  
   @Output() selectedQuestions = new EventEmitter();
   @Input() set questions(value: Question[]) {
     if (value && value.length > 0) {
       this.questionsList = new MatTableDataSource(value);
     }
-
   }
 
-  questionsList: MatTableDataSource<Question>;
-  displayedColumns: string[] = ['Content', 'Id', 'Show'];
-
-  constructor(private questionsService: GetQuestionsService) { }
+  constructor() { }
 
   ngOnInit() {
-    // this.questionsService.get()
-    //   .subscribe(data => {
-    //     this.questionsList = new MatTableDataSource(data.data[0]);
-    //   }, err => alert(err));
-    this.questionsList 
   }
 
   applyFilter(filterValue: string) {
     this.questionsList.filter = filterValue.trim().toLowerCase();
-  }
-
-  test(event) {
-    console.log(event);
   }
 
   onSelect(question: Question) {
@@ -46,12 +36,23 @@ export class QuestionsSelectComponent implements OnInit {
     question.IsSelected = !question.IsSelected;
 
   }
-
-  onSubmit() {
-    let questionsId = this.questionsList.data
-      .filter(q => q.IsSelected)
-      .map(qu => qu.Id);
-    this.selectedQuestions.emit(questionsId);
-  }
 }
 
+
+
+   // this.questionsService.get()
+  //   .subscribe(data => {
+    //     this.questionsList = new MatTableDataSource(data.data[0]);
+    //   }, err => alert(err));
+
+   // test(event) {
+  //   console.log(event);
+  // }
+
+
+  // onSubmit() {
+  //   let questionsId = this.questionsList.data
+  //     .filter(q => q.IsSelected)
+  //     .map(qu => qu.Id);
+  //   this.selectedQuestions.emit(questionsId);
+  // }
