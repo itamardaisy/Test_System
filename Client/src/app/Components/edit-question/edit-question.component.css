@@ -108,3 +108,8 @@
   display: flex;
   justify-content: center;
 }
+
+.footer-buttons {
+  display: flex;
+  justify-content: space-around;
+}
