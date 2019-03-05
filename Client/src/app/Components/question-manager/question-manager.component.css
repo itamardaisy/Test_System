@@ -1,0 +1,9 @@
+.example-container {
+    height: calc(100vh - 140px);
+    overflow-y: scroll;
+}
+
+.footer-buttons {
+    display: flex;
+    justify-content: space-around;
+}

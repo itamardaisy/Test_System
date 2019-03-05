@@ -1,0 +1,67 @@
+<div class="container">
+    <form (ngSubmit)='save()' role="form">
+        <div class="row">
+            <div class="col-25">
+                <label for="study_field">Question subject:</label>
+            </div>
+            <div class="col-75">
+                <span #study_field>{{studyField}}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="fname">Question Type:</label>
+            </div>
+            <div class="col-75">
+                <select (change)="changeState($event)">
+                    <option *ngFor="let option of options">{{option.displayText}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="ques_text">Question Text:</label>
+            </div>
+            <div class="col-75">
+                <textarea [(ngModel)]="question.Content" [ngModelOptions]="{standalone: true}"
+                    placeholder="Question Text" id="ques_text" style="height:100px"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="text_below_ques">Text blow question:</label>
+            </div>
+            <div class="col-75">
+                <textarea [(ngModel)]="question.TextBelow" [ngModelOptions]="{standalone: true}"
+                    placeholder="Text blow question" id="text_below_ques" style="height:150px"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="tag_text">
+                    Tag:
+                </label>
+            </div>
+            <div class="col-75">
+                <input type="text" placeholder="Tag text" [ngModelOptions]="{standalone: true}"
+                    [(ngModel)]="question.Tags">
+            </div>
+        </div>
+        <hr>
+        <app-answer [question]="question"></app-answer>
+        <div class="row">
+            <div class="col-25">
+                <label> Horizontal
+                    <input type="radio" name="h_v" value="Horizontal" (change)="changeHorizontal($event)">
+                </label>
+                <label> Vertical
+                    <input type="radio" name="h_v" value="Vertical" (change)="changeHorizontal($event)">
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <button type="submit">Save</button>
+        </div>
+    </form>
+</div>
+<div>{{ question | json }}</div>
