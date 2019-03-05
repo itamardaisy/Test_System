@@ -1,0 +1,21 @@
+<form #userTestForm="ngForm">
+  <div class="userTestContainer">
+    <h1>{{userTest.name}}</h1>
+    <div *ngFor="let q of userTest.questions; let i=index">
+      <app-user-test-question [question]="q" [index]="i" *ngIf="i === selectedIndex"></app-user-test-question>
+    </div>
+    <div class="btnContainer">
+      <!-- <input type="button" value="prev" (click)="moveIndex(-1)"> -->
+      <button mat-raised-button color="primary" (click)="moveIndex(-1)">❮❮ Previous question</button>
+      <!-- <input type="button" value="next" (click)="moveIndex(1)"> -->
+      <button mat-raised-button color="primary" (click)="moveIndex(1)">Next question ❯❯</button>
+      <!-- <input type="button" value="submit"> -->
+    </div>
+    <ol> <b> Quick navigation:</b>
+      <li *ngFor="let q of userTest.questions; let i = index">
+        <a (click)="goToIndex(i)">{{i +1}} <span *ngIf="!(i === userTest.questions.length -1)">|</span> </a>
+      </li>
+    </ol>
+  </div>
+
+</form>

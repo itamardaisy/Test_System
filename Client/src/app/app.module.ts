@@ -16,15 +16,17 @@ import { MatTableModule, MatInputModule } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import {MatDialogModule} from '@angular/material/dialog';
+    
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatListModule } from '@angular/material/list';
 import { CreateTestComponent } from './Components/test/create-test/create-test.component';
 import { TableSortingExample } from './Components/test/testfilter/testfilter.component';
-import {MatButtonModule} from '@angular/material/button'
+import { MatButtonModule } from '@angular/material/button';
+import { UserTestComponent } from './Components/user-test/user-test.component';
+import { UserTestQuestionComponent } from './Components/user-test-question/user-test-question.component'
 
 const appRoutes: Routes = [
     { path: 'Register', component: RegisterComponent },
@@ -47,7 +49,9 @@ const appRoutes: Routes = [
         ResetPasswordComponent,
         EditQuestionComponent,
         CreateTestComponent,
-        TableSortingExample
+        TableSortingExample,
+        UserTestComponent,
+        UserTestQuestionComponent
     ],
     imports: [
         BrowserModule,
