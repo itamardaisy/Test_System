@@ -1,9 +1,0 @@
-.center-main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-button {
-    width: 200px;
-}

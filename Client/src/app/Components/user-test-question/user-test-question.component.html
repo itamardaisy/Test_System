@@ -1,0 +1,9 @@
+<div class="questionContainer">    
+<h2 style="color: rgb(62, 69,114); font-weight: 700 ">Question #{{index + 1}}</h2>
+<h3 style="font-weight:600">{{question.question}}</h3>
+<div *ngFor="let ans of question.answares"> 
+    <!-- <input type="checkbox" name="q.id" value="ans.content" [(ngModel)]="ans.isSelected"/> -->
+    <!-- <span>{{ans.content}}</span> -->
+    <mat-checkbox name="q.id" value="ans.content" [(ngModel)]="ans.isSelected">{{ans.content}}</mat-checkbox>
+</div>
+</div>

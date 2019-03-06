@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Admin } from 'src/app/Models/AdminUser';
 import { RegisterService } from 'src/app/Services/Register/register.service';
-import { StatusCodesEnum as esc } from '../../Enums/StatusCodesEnum';
+import { EStatusCode as esc } from '../../Enums/EStatusCodes';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -24,6 +24,7 @@ export class RegisterComponent implements OnInit {
         const observable = this.registerService.register(this.newAdmin);
         console.log(this.newAdmin.Email);
         observable.subscribe(response => {
+            alert(response);
             if (response === esc.usernameExist) {
                 this.isUsernameExist = true;
             } else if (response === esc.emailExist) {
