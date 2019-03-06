@@ -14,6 +14,7 @@ class DBContext {
     excecuteProcedureDB(procedureName, sqlParams, callBack) {
         var req = dbPool.request();
         sqlParams.forEach(p => {
+            console.log(p.paramName);
             req.input(p.paramName, p.sqlType, p.value);
         });
         req.execute(procedureName, (err, data) => {

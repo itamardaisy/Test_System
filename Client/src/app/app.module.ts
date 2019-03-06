@@ -22,18 +22,20 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatListModule } from '@angular/material/list';
+import {MatRadioModule} from '@angular/material/radio';
 import { CreateTestComponent } from './Components/test/create-test/create-test.component';
 import { TableSortingExample } from './Components/test/testfilter/testfilter.component';
 import { MatButtonModule } from '@angular/material/button';
 import { UserTestComponent } from './Components/user-test/user-test.component';
 import { UserTestQuestionComponent } from './Components/user-test-question/user-test-question.component'
 
+
 const appRoutes: Routes = [
     { path: 'Register', component: RegisterComponent },
+    { path: 'Home', component: HomeComponent},
     { path: 'QuestionManager', component: QuestionManagerComponent },
     { path: 'Login', component: LoginComponent },
     { path: 'SelectQuestions', component: QuestionsSelectComponent },
-    { path: 'QuestionManager', component: QuestionManagerComponent },
     { path: 'EditQuestion', component: EditQuestionComponent }
 ];
 
@@ -66,6 +68,8 @@ const appRoutes: Routes = [
         MatCheckboxModule,
         MatDialogModule,
         MatButtonModule,
+        MatRadioModule,
+        MatDialogModule,
         RouterModule.forRoot(
             appRoutes,
             { enableTracing: true }
