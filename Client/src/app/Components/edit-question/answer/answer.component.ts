@@ -14,8 +14,6 @@ export class AnswerComponent implements OnInit {
     answersNotEmpty: boolean;
     textEmpty: boolean;
 
-    @ViewChild('radioAnswer') radioGroup;
-
     constructor() { }
 
     ngOnInit() {

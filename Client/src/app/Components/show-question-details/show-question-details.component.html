@@ -1,15 +1,46 @@
 <h1 mat-dialog-title>Question Display</h1>
 <div mat-dialog-content>
-    <div *ngIf="data.question.IsHorizontal else notHorizontal">
-        <ul *ngFor="let answer of data.question.Answers">
-            <li>{{answer.Text}}</li>
-        </ul>
-    </div>
-    <div #notHorizontal>
-        <ul *ngFor="let answer of data.question.Answers">
-            <li>{{answer.Text}}</li>
-        </ul>
-    </div>
+    <!-- Checks if the question is Horizontal or not -->
+    <ng-container *ngIf="data.isHorizontal; then thenTemplate; else elseTemplate"></ng-container>
+    <ng-template #thenTemplate>
+        <!-- Checks if the question is multiple type or not -->
+        <ng-container *ngIf="data.isMultiple; then thenTemplate; else elseTemplate"></ng-container>
+        <ng-template #thenTemplate>
+            <div>
+                <ul class="list-group" *ngFor="let answer of data.question.Answers; let i = index">
+                    <li class="list-group-item">
+                        <div class="checkbox" [ngStyle]="{'': data.question.Answers[i].isCorrect === true}">
+                            <input type="checkbox" #checkbox />
+                            <label for="checkbox">
+                                {{data.question.Answers[i].Text}}
+                            </label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </ng-template>
+        <ng-template #elseTemplate>
+            <div>
+                <ul class="list-group" *ngFor="let answer of data.question.Answers; let i = index">
+                    <li class="list-group-item">
+                        <div class="checkbox">
+                            <input type="radio" #radio />
+                            <label for="radio">
+                                {{data.question.Answers[i].Text}}
+                            </label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </ng-template>
+    </ng-template>
+    <ng-template #elseTemplate>
+        <div>
+            <ul *ngFor="let answer of data.question.Answers; let i = index">
+                <li>{{data.question.Answers[i].Text}}</li>
+            </ul>
+        </div>
+    </ng-template>
 </div>
 <div mat-dialog-actions>
     <button mat-button (click)="closeDialog()">Ok</button>
