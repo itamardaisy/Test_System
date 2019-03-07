@@ -19,6 +19,7 @@ export class ShowQuestionDetailsComponent implements OnInit {
                 @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
 
     ngOnInit() {
+        alert(this.data.question.Answers[0].IsCorrect);
         this.data.isHorizontal = this.data.question.IsHorizontal;
         this.data.isMultiple = this.data.question.IsMultiple;
     }
@@ -35,6 +36,7 @@ export class ShowQuestionDetailsComponent implements OnInit {
 })
 export class ShowQuestionButtonComponent implements OnInit {
     @Input() question: Question;
+
     constructor(public dialog: MatDialog) {}
 
     ngOnInit() {}
@@ -43,7 +45,7 @@ export class ShowQuestionButtonComponent implements OnInit {
         const dialogRef = this.dialog.open(ShowQuestionDetailsComponent, {
             width: '600px',
             height: '400px',
-            data: { question: this.question, isHorizontal: true, isMultiple: true }
+            data: { question: this.question, isHorizontal: false, isMultiple: false }
           });
           dialogRef.afterClosed().subscribe(result => {
             console.log('The dialog was closed');

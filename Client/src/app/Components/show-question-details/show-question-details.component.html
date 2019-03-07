@@ -8,13 +8,11 @@
         <ng-template #thenTemplate>
             <div>
                 <ul class="list-group" *ngFor="let answer of data.question.Answers; let i = index">
-                    <li class="list-group-item">
-                        <div class="checkbox" [ngStyle]="{'': data.question.Answers[i].isCorrect === true}">
-                            <input type="checkbox" #checkbox />
-                            <label for="checkbox">
-                                {{data.question.Answers[i].Text}}
-                            </label>
-                        </div>
+                    <li class="list-group-item" [ngStyle]="{'background-color': answer.IsCorrect? 'green':'red'}">
+                        <input type="checkbox" #checkbox />
+                        <label for="checkbox">
+                            {{data.question.Answers[i].Text}}
+                        </label>
                     </li>
                 </ul>
             </div>
@@ -22,23 +20,21 @@
         <ng-template #elseTemplate>
             <div>
                 <ul class="list-group" *ngFor="let answer of data.question.Answers; let i = index">
-                    <li class="list-group-item">
-                        <div class="checkbox">
+                    <li class="list-group-item" [ngStyle]="{'background-color': answer.IsCorrect? 'green':'red'}">
                             <input type="radio" #radio />
                             <label for="radio">
                                 {{data.question.Answers[i].Text}}
                             </label>
-                        </div>
                     </li>
                 </ul>
             </div>
         </ng-template>
     </ng-template>
-    <ng-template #elseTemplate>
-        <div>
-            <ul *ngFor="let answer of data.question.Answers; let i = index">
-                <li>{{data.question.Answers[i].Text}}</li>
-            </ul>
+    <!-- In this scenario the question in horizontal -->
+    <ng-template class="container-horizontal" #elseTemplate>
+        <div *ngFor="let answer of data.question.Answers; let i = index" 
+                [ngStyle]="{'background-color': answer.IsCorrect? 'green':'red'}">
+            <div>{{data.question.Answers[i].Text}}</div>
         </div>
     </ng-template>
 </div>
