@@ -1,22 +1,23 @@
-<form #testForm="ngForm" (ngSubmit)="Submit($event)">
+<form #testForm="ngForm" (ngSubmit)="Submit(testModel)">
 
-  <div>{{testForm.value | json}}</div>
-  <!-- <div>{{testModel | json}}</div> -->
+  <!-- <div>{{testForm.value | json}}</div>
+  <div>{{testModel | json}}</div> -->
 
 
   <div class="testContainer">
-    <div class="testDetailsContainer halfPage">
+    <div class=" testDetailsContainer halfPage">
       <h1>Genral test details</h1>
+      <!-- <div class="tableContainer"> -->
       <div>Field of study: <b>development</b></div>
 
       <mat-form-field>
-        <mat-select placeholder="Language" name="languages" [(ngModel)]="testModel.Language">
+        <mat-select placeholder="Language" name="Language" required [(ngModel)]="testModel.Language">
           <mat-option *ngFor="let language of languages" [value]="language">{{language}}</mat-option>
         </mat-select>
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput placeholder="Test name" name="testName" [(ngModel)]="testModel.Name" required>
+        <input matInput placeholder="Test name" name="Name" [(ngModel)]="testModel.Name" required>
       </mat-form-field>
 
       <mat-form-field>
@@ -32,21 +33,20 @@
       </mat-form-field>
 
       <mat-form-field>
-        <textarea matInput placeholder="Text success" name="TextSuccess" [(ngModel)]="testModel.TextSuccess"
-          required></textarea>
+        <textarea matInput placeholder="Text success" name="TextSuccess" [(ngModel)]="testModel.TextSuccess"></textarea>
       </mat-form-field>
 
       <mat-form-field>
-        <textarea matInput placeholder="Text failure" name="TextFailure" [(ngModel)]="testModel.TextFailure"
-          required></textarea>
+        <textarea matInput placeholder="Text failure" name="TextFailure" [(ngModel)]="testModel.TextFailure"></textarea>
       </mat-form-field>
 
       <mat-form-field>
-        <mat-select placeholder="certificate" name="certificate" [(ngModel)]="testModel.CertificateURL">
+        <mat-select placeholder="certificate" name="CertificateURL" [(ngModel)]="testModel.CertificateURL">
           <mat-option *ngFor="let c of certificates" [value]="c">{{c}}</mat-option>
         </mat-select>
       </mat-form-field>
 
+      <!-- </div> -->
     </div>
 
     <div class="testDetailsContainer halfPage">
@@ -68,12 +68,12 @@
 
       <mat-form-field>
         <input matInput placeholder="Subject success text" name="SubjectSuccessText"
-          [(ngModel)]="testModel.SubjectSuccessText" required>
+          [(ngModel)]="testModel.SubjectSuccessText">
       </mat-form-field>
 
       <mat-form-field>
         <textarea matInput placeholder="Subject success body" name="SubjectSuccessBody"
-          [(ngModel)]="testModel.SubjectSuccessBody" required #successTextArea></textarea>
+          [(ngModel)]="testModel.SubjectSuccessBody" #successTextArea></textarea>
       </mat-form-field>
 
       <b> Predefined templates - click to copy to clipboard</b>
@@ -85,14 +85,14 @@
 
       <b class="boundaryLine">Failing the test</b>
 
-      <mat-form-field>
-        <input matInput placeholder="Subject failure text" name="SubjectSuccessText"
-          [(ngModel)]="testModel.SubjectSuccessText" required>
+      <mat-form-field>                                           
+        <input matInput placeholder="Subject failure text" name="SubjectFailureText"
+          [(ngModel)]="testModel.SubjectFailureText">
       </mat-form-field>
 
-      <mat-form-field>
+      <mat-form-field>                                              
         <textarea matInput placeholder="Subject failure body" name="SubjectFailureBody"
-          [(ngModel)]="testModel.SubjectFailureBody" required #failureTextArea></textarea>
+          [(ngModel)]="testModel.SubjectFailureBody" #failureTextArea></textarea>
       </mat-form-field>
 
       <b> Predefined templates - click to copy to clipboard</b>
@@ -102,17 +102,15 @@
           readonly="readonly" value={{i+ind}} #test+ind />
       </div>
 
-      <!-- <input type="text" (click)="copy()" readonly="readonly" value="Text to copy" #test /> -->
-
     </div>
   </div>
   <div class="testDetailsContainer">
-      <app-questions-select></app-questions-select>
+    <app-questions-select [questions]="testModel.Questions" (selectedQuestions)="getQuestions($event)"></app-questions-select>
   </div>
-  <input type="submit" value="Submit"/>
+  <button type="submit" mat-raised-button color="accent" [disabled]="!testForm.valid">Submit</button>
 </form>
 
-<div>end</div>
+<!-- <div>end</div> -->
 
 
 

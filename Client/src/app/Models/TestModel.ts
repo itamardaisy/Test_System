@@ -1,22 +1,21 @@
-export class TestModel {
-    constructor(
-        public Id: string,
-        public Language: string,
-        public Name: string,
-        public HeaderContent: string,
-        public CreatorEmail: string,
-        public PassingGrade: number,
-        public ShowAnswers: boolean,
-        public CertificateURL: string,
-        public TextSuccess: string,
-        public TextFailure: string,
-        public SubjectFailureText: string,
-        public SubjectSuccessText: string,
-        public SubjectFailureBody: string,
-        public SubjectSuccessBody: string,
-        public CategoryId: number,
-        public IsActive: boolean) {
+import Question from './Question';
 
-    }
+export class TestModel {
+    public Language: string = null;
+    public Name: string = null;
+    public HeaderContent: string = null;
+    public CreatorEmail: string = null;
+    public PassingGrade: number = null;
+    public ShowAnswers: boolean = false;
+    public CertificateURL: string = null;
+    public TextSuccess: string = null;
+    public TextFailure: string = null;
+    public SubjectFailureText: string = null;
+    public SubjectSuccessText: string = null;
+    public SubjectFailureBody: string = null;
+    public SubjectSuccessBody: string = null;
+    public CategoryId: number = -1;
+    public IsActive: boolean = false;
+    public Questions: Question[] = [];
 
 }

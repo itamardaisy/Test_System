@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { TestModel } from '../../../Models/TestModel';
 import { GetTemplatesService } from 'src/app/Services/Test/get-templates.service';
+import { AddTestService } from 'src/app/Services/Test/add-test.service';
+import { template } from '@angular/core/src/render3';
+import { GetQuestionsService } from 'src/app/Services/Test/get-questions.service';
 
 @Component({
   selector: 'app-create-test',
@@ -8,25 +11,27 @@ import { GetTemplatesService } from 'src/app/Services/Test/get-templates.service
   styleUrls: ['./create-test.component.css']
 })
 export class CreateTestComponent implements OnInit {
-
-  //@ViewChild('test') test: any;
   @ViewChild('successTextArea') successText: ElementRef;
   @ViewChild('failureTextArea') failureText: ElementRef;
 
-  languages = ['engliah', 'hebrew'];
+  languages = ['english', 'hebrew'];
+  selectedQuestinos = [];
   templates: string[] = [];
   certificates: any = ['gold', 'silver', 'copper'];
+  testModel = new TestModel();
 
-
-  testModel = new TestModel('456', 'en', 'lol', 'fsd', 'q2@d.d', 45, true, 'df', 'fd', 'fd', 'fd'
-    , 'fd', 'fd', 'fd', 456, false);
-
-  constructor(private templateService: GetTemplatesService) { }
+  constructor(private questionsService: GetQuestionsService
+    , private templateService: GetTemplatesService, private testService: AddTestService) { }
 
   ngOnInit() {
     this.templateService.get()
       .subscribe(data => {
         this.templates = data;
+      }, err => alert(err));
+
+    this.questionsService.get()
+      .subscribe(data => {
+        this.testModel.Questions = data.data[0];
       }, err => alert(err));
   }
 
@@ -40,11 +45,31 @@ export class CreateTestComponent implements OnInit {
     }
   }
 
-  Submit(event) {
-    console.log(event);
+  getQuestions(ev) {
+    this.selectedQuestinos = ev;
   }
 
+  Submit(testform: TestModel) {
+    console.log(testform);
+    const test = this.prepareTest(testform);
 
+    this.testService.post(test)
+      .subscribe(data => console.log(data)
+        , err => console.log(err));
+  }
+
+  prepareTest(testform: TestModel) {
+    testform.CategoryId = 1; // todo
+    const selected = testform.Questions
+      .filter(q => q.IsSelected === true)
+      .map(q => q.Id);
+
+    delete testform.Questions;
+    const test = { testDetails: testform, testQuestions: selected };
+
+     // todo: min selelcted questions //ngx-toastr?
+    return test;
+  }
 }
 
 
