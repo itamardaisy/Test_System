@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { ControlContainer, NgForm } from '@angular/forms';
 import { UserTestService } from 'src/app/Services/user/user-test.service';
 
@@ -8,7 +8,7 @@ import { UserTestService } from 'src/app/Services/user/user-test.service';
   styleUrls: ['./user-test.component.css']
 })
 export class UserTestComponent implements OnInit {
-  userTest = {
+  userTest1 = {
     name: 'js for beginners test',
     questions: [
       {
@@ -145,14 +145,19 @@ export class UserTestComponent implements OnInit {
     ]
   }
 
+  userTest;
+
   selectedIndex = 0;
   isValid = false;
 
   constructor(private userTestService: UserTestService) { }
 
   ngOnInit() {
-    // this.userTestService.get()
-    // .subscribe
+    this.userTestService.get()
+      .subscribe(data => {
+        this.userTest = data;
+      }, err =>
+          console.log(err));
   }
 
   moveIndex(value) {
@@ -199,7 +204,8 @@ export class UserTestComponent implements OnInit {
         };
       })
     };
-    console.log(test);
+    this.userTestService.post(test)
+      .subscribe(data => console.log(data), err => console.log(err));
   }
 
   goToIndex(value) {

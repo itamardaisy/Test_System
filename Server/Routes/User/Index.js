@@ -1,4 +1,4 @@
-const testRouter = require('express').Router();
+const userRouter = require('express').Router();
 const sql = require('mssql');
 const _ = require('lodash');
 const bodyParser = require('body-parser');
@@ -7,7 +7,7 @@ const sqlParameter = require('../../Models/SqlParameter');
 const repository = require('../../Dal/Repository');
 
 
-testRouter.get('/getUserTest', (req, res) => {
+userRouter.get('/getUserTest', (req, res) => {
     console.log("in get catgory")
     //let body = _.pick(req.body(['categoryId']));
 
@@ -150,6 +150,10 @@ testRouter.get('/getUserTest', (req, res) => {
     res.send(userTest);
 });
 
-testRouter.post('/userTestDone', (req, res) => {
+userRouter.post('/userTestDone', (req, res) => {
+    console.log('in post')
+ console.log(req.body);
     
 });
+
+module.exports = userRouter;

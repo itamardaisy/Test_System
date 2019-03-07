@@ -29,6 +29,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { UserTestComponent } from './Components/user-test/user-test.component';
 import { UserTestQuestionComponent } from './Components/user-test-question/user-test-question.component';
 import { AnswerComponent } from './Components/edit-question/answer/answer.component';
+import { ShowTestComponent } from './Components/show-test/show-test.component';
+import { ShowUserTestComponent } from './Components/show-user-test/show-user-test.component';
+import { ShowUserTestQuestionComponent } from './Components/show-user-test-question/show-user-test-question.component';
 
 
 const appRoutes: Routes = [
@@ -55,7 +58,10 @@ const appRoutes: Routes = [
         TableSortingExample,
         UserTestComponent,
         UserTestQuestionComponent,
-        AnswerComponent
+        AnswerComponent,
+        ShowTestComponent,
+        ShowUserTestComponent,
+        ShowUserTestQuestionComponent
     ],
     imports: [
         BrowserModule,
