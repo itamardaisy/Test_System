@@ -11,7 +11,6 @@ export const environment = {
     templateUrl: '/test/getPredefinedTemplates',
     addTestUrl: '/test/addTest',
     getUserTestUrl: '/user/getUserTest',
-                    //user/getUserTest
     userTestDoneUrl: '/user/userTestDone'
 };
 
