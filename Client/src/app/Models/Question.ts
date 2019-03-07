@@ -1,4 +1,4 @@
-import { Answer } from './Answer';
+// import { Answer } from './Answer';
 
 export class Question {
     Id: number;
@@ -9,5 +9,5 @@ export class Question {
     Tags: string;
     IsActive: boolean;
     IsSelected: boolean;
-    Answers: Answer[];
+    // Answers: Answer[];
 }

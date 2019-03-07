@@ -13,6 +13,7 @@ export class UserTestComponent implements OnInit {
       {
         id: 1,
         question: 'the first question?',
+        isAnswered: true,
         answares: [{
           id: 1,
           content: 'answare of question 1',
@@ -22,7 +23,7 @@ export class UserTestComponent implements OnInit {
           id: 2,
           content: 'answare 2',
           isCorrect: false,
-          isSelected: false
+          isSelected: true
         }, {
           id: 3,
           content: 'answare 3',
@@ -38,6 +39,7 @@ export class UserTestComponent implements OnInit {
       }, {
         id: 2,
         question: 'the second question?',
+        isAnswered: false,
         answares: [{
           id: 1,
           content: 'answare of qouestion 2',
@@ -63,6 +65,7 @@ export class UserTestComponent implements OnInit {
       }, {
         id: 3,
         question: 'The third question?',
+        isAnswered: false,
         answares: [{
           id: 1,
           content: 'answare foor question',
@@ -88,6 +91,7 @@ export class UserTestComponent implements OnInit {
       }, {
         id: 4,
         question: 'the fourth question?',
+        isAnswered: false,
         answares: [{
           id: 1,
           content: 'answare of qouestion 4',
@@ -113,6 +117,7 @@ export class UserTestComponent implements OnInit {
       }, {
         id: 5,
         question: 'the fifth question?',
+        isAnswered: false,
         answares: [{
           id: 1,
           content: 'answare of qouestion 5',
@@ -140,6 +145,7 @@ export class UserTestComponent implements OnInit {
   }
 
   selectedIndex = 0;
+  isValid = false;
 
   constructor() { }
 
@@ -147,25 +153,54 @@ export class UserTestComponent implements OnInit {
   }
 
   moveIndex(value) {
+    if (this.userTest.questions[this.selectedIndex].answares
+      .filter(a => a.isSelected === true).length > 0) {
+      this.userTest.questions[this.selectedIndex].isAnswered = true;
+    } else {
+      this.userTest.questions[this.selectedIndex].isAnswered = false;
+    }
+
+    console.log(this.userTest.questions[this.selectedIndex], this.userTest.questions[this.selectedIndex].isAnswered);
+
     this.selectedIndex += value;
   }
 
-  next(){
+  next() {
 
   }
 
-  submit(){
+  submitCheck(): boolean {
     let isValid = true;
     this.userTest.questions.forEach(q => {
-      if (q.answares.filter(a => a.isSelected).length === 0){
+      if (q.answares.filter(a => a.isSelected).length === 0) {
         isValid = false;
+        console.log('fill all questions')
         return;
       }
-    })
+    });
+    return isValid;
   }
 
-  goToIndex(value){
-    this.selectedIndex  = value;
+  submit() {
+    if (!this.submitCheck()) {
+      return;
+    }
+
+    let test = {
+      testId: 1,
+      userId: 1,
+      answares: this.userTest.questions.map(question => {
+        return {
+          questionId: question.id,
+          answeresIds: question.answares.filter(a => a.isSelected).map(a => a.id)
+        };
+      })
+    };
+    console.log(test);
+  }
+
+  goToIndex(value) {
+    this.selectedIndex = value;
   }
 
 }

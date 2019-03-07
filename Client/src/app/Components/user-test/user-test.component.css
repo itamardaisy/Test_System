@@ -33,3 +33,7 @@ li{
 button{
     margin: 10px 10px;
 }
+.answered{
+    background-color: rgb(255, 206, 165);
+    color:rgb(215, 125, 68); ;
+}

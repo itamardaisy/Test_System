@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Admin } from 'src/app/Models/AdminUser';
 import { RegisterService } from 'src/app/Services/Register/register.service';
-import { EStatusCode as esc } from '../../Enums/EStatusCodes';
+// import { EStatusCode as esc } from '../../Enums/EStatusCodes';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -25,15 +25,15 @@ export class RegisterComponent implements OnInit {
         console.log(this.newAdmin.Email);
         observable.subscribe(response => {
             alert(response);
-            if (response === esc.usernameExist) {
-                this.isUsernameExist = true;
-            } else if (response === esc.emailExist) {
-                this.isEmailExist = true;
-            } else {
-                console.log(response);
-                const admin = new Admin().Username = response;
-                this.route.navigate(['/Login']);
-            }
+            // if (response === esc.usernameExist) {
+            //     this.isUsernameExist = true;
+            // } else if (response === esc.emailExist) {
+            //     this.isEmailExist = true;
+            // } else {
+            //     console.log(response);
+            //     const admin = new Admin().Username = response;
+            //     this.route.navigate(['/Login']);
+            // }
         }, error => {
             console.log(error);
         }, () => {

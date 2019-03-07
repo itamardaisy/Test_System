@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 
 import { GetQuestionsService } from 'src/app/Services/Test/get-questions.service';
-import Question from 'src/app/Models/Question';
+
 
 export interface PeriodicElement {
   name: string;

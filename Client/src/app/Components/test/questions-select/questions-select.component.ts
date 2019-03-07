@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild, Output, EventEmitter, Input } from '@angular/core';
 import { GetQuestionsService } from '../../../Services/Test/get-questions.service';
-import Question from 'src/app/Models/Question';
+import { Question } from 'src/app/Models/Question';
+
 import { ControlContainer, NgForm } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material';
 import { getSupportedInputTypes } from '@angular/cdk/platform';

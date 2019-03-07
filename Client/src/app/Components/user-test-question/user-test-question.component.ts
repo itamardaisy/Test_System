@@ -15,10 +15,12 @@ export class UserTestQuestionComponent implements OnInit {
   @Input() question: any;
   @Input() index: number;
   isAnswered = false;
- 
+
   constructor() { }
 
   ngOnInit() {
   }
-
+  test(ans) {
+    ans.isSelected = !ans.isSelected;
+  }
 }
