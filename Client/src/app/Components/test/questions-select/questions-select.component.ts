@@ -15,7 +15,7 @@ import { getSupportedInputTypes } from '@angular/cdk/platform';
 export class QuestionsSelectComponent implements OnInit {
   questionsList: MatTableDataSource<Question>;
   displayedColumns: string[] = ['Content', 'Id', 'Show'];
-  
+
   @Output() selectedQuestions = new EventEmitter();
   @Input() set questions(value: Question[]) {
     if (value && value.length > 0) {

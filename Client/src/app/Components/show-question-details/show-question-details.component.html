@@ -1,0 +1,43 @@
+<h1 mat-dialog-title>Question Display</h1>
+<div mat-dialog-content>
+    <!-- Checks if the question is Horizontal or not -->
+    <ng-container *ngIf="data.isHorizontal; then thenTemplate; else elseTemplate"></ng-container>
+    <ng-template #thenTemplate>
+        <!-- Checks if the question is multiple type or not -->
+        <ng-container *ngIf="data.isMultiple; then thenTemplate; else elseTemplate"></ng-container>
+        <ng-template #thenTemplate>
+            <div>
+                <ul class="list-group" *ngFor="let answer of data.question.Answers; let i = index">
+                    <li class="list-group-item" [ngStyle]="{'background-color': answer.IsCorrect? 'green':'red'}">
+                        <input type="checkbox" #checkbox />
+                        <label for="checkbox">
+                            {{data.question.Answers[i].Text}}
+                        </label>
+                    </li>
+                </ul>
+            </div>
+        </ng-template>
+        <ng-template #elseTemplate>
+            <div>
+                <ul class="list-group" *ngFor="let answer of data.question.Answers; let i = index">
+                    <li class="list-group-item" [ngStyle]="{'background-color': answer.IsCorrect? 'green':'red'}">
+                            <input type="radio" #radio />
+                            <label for="radio">
+                                {{data.question.Answers[i].Text}}
+                            </label>
+                    </li>
+                </ul>
+            </div>
+        </ng-template>
+    </ng-template>
+    <!-- In this scenario the question in horizontal -->
+    <ng-template class="container-horizontal" #elseTemplate>
+        <div *ngFor="let answer of data.question.Answers; let i = index" 
+                [ngStyle]="{'background-color': answer.IsCorrect? 'green':'red'}">
+            <div>{{data.question.Answers[i].Text}}</div>
+        </div>
+    </ng-template>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="closeDialog()">Ok</button>
+</div>

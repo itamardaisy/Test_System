@@ -1,4 +1,4 @@
-import Question from './Question';
+import { Question } from './Question';
 
 export class TestModel {
     public Language: string = null;
@@ -6,7 +6,7 @@ export class TestModel {
     public HeaderContent: string = null;
     public CreatorEmail: string = null;
     public PassingGrade: number = null;
-    public ShowAnswers: boolean = false;
+    public ShowAnswers = false;
     public CertificateURL: string = null;
     public TextSuccess: string = null;
     public TextFailure: string = null;
@@ -14,8 +14,8 @@ export class TestModel {
     public SubjectSuccessText: string = null;
     public SubjectFailureBody: string = null;
     public SubjectSuccessBody: string = null;
-    public CategoryId: number = -1;
-    public IsActive: boolean = false;
+    public CategoryId = -1;
+    public IsActive = false;
     public Questions: Question[] = [];
 
 }
