@@ -20,10 +20,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatDialogModule} from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
 import {MatRadioModule} from '@angular/material/radio';
 import { CreateTestComponent } from './Components/test/create-test/create-test.component';
 import { AnswerComponent } from './Components/edit-question/answer/answer.component';
+import { ShowQuestionDetailsComponent } from './Components/show-question-details/show-question-details.component';
+import { ShowQuestionButtonComponent } from './Components/show-question-details/show-question-details.component';
 
 
 const appRoutes: Routes = [
@@ -32,6 +35,7 @@ const appRoutes: Routes = [
     { path: 'QuestionManager', component: QuestionManagerComponent },
     { path: 'Login', component: LoginComponent },
     { path: 'SelectQuestions', component: QuestionsSelectComponent },
+    { path: 'ShowQuestionDetails', component: ShowQuestionDetailsComponent},
     { path: 'EditQuestion', component: EditQuestionComponent }
 ];
 
@@ -47,7 +51,9 @@ const appRoutes: Routes = [
         ResetPasswordComponent,
         EditQuestionComponent,
         CreateTestComponent,
-        AnswerComponent
+        AnswerComponent,
+        ShowQuestionButtonComponent,
+        ShowQuestionDetailsComponent
     ],
     imports: [
         BrowserModule,
@@ -61,6 +67,7 @@ const appRoutes: Routes = [
         MatSelectModule,
         MatCheckboxModule,
         MatRadioModule,
+        MatDialogModule,
         RouterModule.forRoot(
             appRoutes,
             { enableTracing: true }

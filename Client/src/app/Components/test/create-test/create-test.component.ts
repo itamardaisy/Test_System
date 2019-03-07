@@ -9,7 +9,7 @@ import { GetTemplatesService } from 'src/app/Services/Test/get-templates.service
 })
 export class CreateTestComponent implements OnInit {
 
-  //@ViewChild('test') test: any;
+  // @ViewChild('test') test: any;
   @ViewChild('successTextArea') successText: ElementRef;
   @ViewChild('failureTextArea') failureText: ElementRef;
 
