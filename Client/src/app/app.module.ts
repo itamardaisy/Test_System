@@ -29,10 +29,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { UserTestComponent } from './Components/user-test/user-test.component';
 import { UserTestQuestionComponent } from './Components/user-test-question/user-test-question.component';
 import { AnswerComponent } from './Components/edit-question/answer/answer.component';
-import { ShowTestComponent } from './Components/show-test/show-test.component';
 import { ShowUserTestComponent } from './Components/show-user-test/show-user-test.component';
 import { ShowUserTestQuestionComponent } from './Components/show-user-test-question/show-user-test-question.component';
 
+import { ShowQuestionDetailsComponent } from './Components/show-question-details/show-question-details.component';
+import { ShowQuestionButtonComponent } from './Components/show-question-details/show-question-details.component';
 
 const appRoutes: Routes = [
     { path: 'Register', component: RegisterComponent },
@@ -59,9 +60,10 @@ const appRoutes: Routes = [
         UserTestComponent,
         UserTestQuestionComponent,
         AnswerComponent,
-        ShowTestComponent,
         ShowUserTestComponent,
-        ShowUserTestQuestionComponent
+        ShowUserTestQuestionComponent,
+        ShowQuestionDetailsComponent,
+        ShowQuestionButtonComponent
     ],
     imports: [
         BrowserModule,
