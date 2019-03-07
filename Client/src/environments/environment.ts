@@ -9,8 +9,9 @@ export const environment = {
     registerUrl: '/admin/register',
     loginUrl: '/admin/login',
     templateUrl: '/test/getPredefinedTemplates',
-    addTestUrl:'/test/addTest'
-
+    addTestUrl: '/test/addTest',
+    getUserTestUrl: '/user/getUserTest',
+    userTestDoneUrl: '/user/userTestDone'
 };
 
 /*

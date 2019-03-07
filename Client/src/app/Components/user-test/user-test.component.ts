@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ControlContainer, NgForm } from '@angular/forms';
+import { UserTestService } from 'src/app/Services/user/user-test.service';
 
 @Component({
   selector: 'app-user-test',
@@ -147,9 +148,11 @@ export class UserTestComponent implements OnInit {
   selectedIndex = 0;
   isValid = false;
 
-  constructor() { }
+  constructor(private userTestService: UserTestService) { }
 
   ngOnInit() {
+    // this.userTestService.get()
+    // .subscribe
   }
 
   moveIndex(value) {
