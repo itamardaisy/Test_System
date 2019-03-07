@@ -29,7 +29,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { UserTestComponent } from './Components/user-test/user-test.component';
 import { UserTestQuestionComponent } from './Components/user-test-question/user-test-question.component';
 import { AnswerComponent } from './Components/edit-question/answer/answer.component';
-
+import { ShowQuestionDetailsComponent } from './Components/show-question-details/show-question-details.component';
+import { ShowQuestionButtonComponent } from './Components/show-question-details/show-question-details.component';
 
 const appRoutes: Routes = [
     { path: 'Register', component: RegisterComponent },
@@ -55,7 +56,9 @@ const appRoutes: Routes = [
         TableSortingExample,
         UserTestComponent,
         UserTestQuestionComponent,
-        AnswerComponent
+        AnswerComponent,
+        ShowQuestionDetailsComponent,
+        ShowQuestionButtonComponent
     ],
     imports: [
         BrowserModule,
