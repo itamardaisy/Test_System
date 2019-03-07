@@ -16,17 +16,18 @@ import { MatTableModule, MatInputModule } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+    
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatDialogModule} from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
 import {MatRadioModule} from '@angular/material/radio';
 import { CreateTestComponent } from './Components/test/create-test/create-test.component';
-import { AnswerComponent } from './Components/edit-question/answer/answer.component';
-import { ShowQuestionDetailsComponent } from './Components/show-question-details/show-question-details.component';
-import { ShowQuestionButtonComponent } from './Components/show-question-details/show-question-details.component';
+import { TableSortingExample } from './Components/test/testfilter/testfilter.component';
+import { MatButtonModule } from '@angular/material/button';
+import { UserTestComponent } from './Components/user-test/user-test.component';
+import { UserTestQuestionComponent } from './Components/user-test-question/user-test-question.component'
 
 
 const appRoutes: Routes = [
@@ -35,7 +36,6 @@ const appRoutes: Routes = [
     { path: 'QuestionManager', component: QuestionManagerComponent },
     { path: 'Login', component: LoginComponent },
     { path: 'SelectQuestions', component: QuestionsSelectComponent },
-    { path: 'ShowQuestionDetails', component: ShowQuestionDetailsComponent},
     { path: 'EditQuestion', component: EditQuestionComponent }
 ];
 
@@ -51,9 +51,9 @@ const appRoutes: Routes = [
         ResetPasswordComponent,
         EditQuestionComponent,
         CreateTestComponent,
-        AnswerComponent,
-        ShowQuestionButtonComponent,
-        ShowQuestionDetailsComponent
+        TableSortingExample,
+        UserTestComponent,
+        UserTestQuestionComponent
     ],
     imports: [
         BrowserModule,
@@ -66,6 +66,8 @@ const appRoutes: Routes = [
         MatInputModule,
         MatSelectModule,
         MatCheckboxModule,
+        MatDialogModule,
+        MatButtonModule,
         MatRadioModule,
         MatDialogModule,
         RouterModule.forRoot(

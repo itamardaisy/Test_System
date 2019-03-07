@@ -1,0 +1,39 @@
+ol{   
+    list-style: none;
+    margin: auto;
+    width: 60%;
+}
+
+.h2 {
+    color: red;
+}
+
+li{
+    display: inline;
+    font-size: 2em;
+}
+.userTestContainer{
+    margin: auto;
+    width: 50%;
+    /* margin: 20px; */
+    background-color: rgb(245, 238, 238);
+    box-sizing: border-box;
+    border-radius: 10px;
+    min-width: 300px;
+
+    border: 1px solid rgba(0,0,0,.03);
+    box-shadow: 0 2px 2px rgba(0,0,0,.24), 0 0 2px rgba(0,0,0,.12);
+}
+
+.btnContainer{
+    margin: auto;
+    width: 60%;
+}
+
+button{
+    margin: 10px 10px;
+}
+.answered{
+    background-color: rgb(255, 206, 165);
+    color:rgb(215, 125, 68); ;
+}

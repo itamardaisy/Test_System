@@ -14,10 +14,38 @@
     padding: 12px 12px 12px 0;
     display: inline-block;
   }
+  
+  input[type=submit] {
+    background-color: rgb(20, 20, 22);
+    color: white;
+    padding: 12px 100px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+  }
 
   .add-question {
     display: flex;
     justify-content: space-between; /* Can be changed in the live sample */
+  }
+
+  .answer-list {
+      justify-content: space-between;
+  }
+
+  input[type=button] {
+    background-color: rgb(20, 20, 22);
+    color: white;
+    padding: 12px 100px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #45a049;
   }
   
   .container {
@@ -62,54 +90,3 @@
         border-width: 1px;
       }
   }
-
-  body {font-family: Arial, Helvetica, sans-serif;}
-* {box-sizing: border-box;}
-
-.form-inline {  
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.form-inline label {
-  margin: 5px 10px 5px 0;
-}
-
-.form-inline input {
-  vertical-align: middle;
-  margin: 5px 10px 5px 0;
-  padding: 10px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-}
-
-@media (max-width: 800px) {
-    .form-inline input {
-    margin: 10px 0;
-  }
-  
-  .form-inline {
-        flex-direction: column;
-        align-items: stretch;
-    } 
-}
-
-.right-element{
-    display: flex;
-    justify-content: right;
-    width: 100px;
-    height: 50px;
-    border-radius: 4px;
-}
-
-.answers-div {
-  display: flex;
-  justify-content: center;
-}
-
-.footer-buttons {
-  display: flex;
-  justify-content: space-around;
-}
