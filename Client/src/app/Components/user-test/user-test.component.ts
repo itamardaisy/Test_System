@@ -9,7 +9,7 @@ import { UserTestService } from 'src/app/Services/user/user-test.service';
 })
 export class UserTestComponent implements OnInit {
     userTest = {
-        name: 'js for beginners test',
+        name: 'Javascript for beginners test',
         questions: [
             {
                 id: 1,
@@ -162,9 +162,7 @@ export class UserTestComponent implements OnInit {
         } else {
             this.userTest.questions[this.selectedIndex].isAnswered = false;
         }
-
         console.log(this.userTest.questions[this.selectedIndex], this.userTest.questions[this.selectedIndex].isAnswered);
-
         this.selectedIndex += value;
     }
 
@@ -177,7 +175,7 @@ export class UserTestComponent implements OnInit {
         this.userTest.questions.forEach(q => {
             if (q.answares.filter(a => a.isSelected).length === 0) {
                 isValid = false;
-                console.log('fill all questions')
+                console.log('fill all questions');
                 return;
             }
         });
@@ -189,7 +187,7 @@ export class UserTestComponent implements OnInit {
             return;
         }
 
-        let test = {
+        const test = {
             testId: 1,
             userId: 1,
             answares: this.userTest.questions.map(question => {

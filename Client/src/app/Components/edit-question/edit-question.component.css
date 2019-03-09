@@ -90,3 +90,12 @@
         border-width: 1px;
       }
   }
+
+.footer-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+button {
+  width: 100px;
+}
