@@ -33,6 +33,10 @@
     
   }
 
+  td:nth-child(2){
+    width: 100px;
+  }
+
   button{
     line-height: 30px;
   }

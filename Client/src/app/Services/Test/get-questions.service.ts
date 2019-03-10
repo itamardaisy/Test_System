@@ -18,6 +18,6 @@ export class GetQuestionsService {
   }
 
   get(): Observable<any> {
-      return this.http.get(env.baseUrl + env.questionUrl);
+      return this.http.get(`${env.baseUrl}${env.questionUrl}`);
   }
 }

@@ -41,7 +41,8 @@ const appRoutes: Routes = [
     { path: 'QuestionManager', component: QuestionManagerComponent },
     { path: 'Login', component: LoginComponent },
     { path: 'SelectQuestions', component: QuestionsSelectComponent },
-    { path: 'EditQuestion', component: EditQuestionComponent }
+    { path: 'EditQuestion', component: EditQuestionComponent },
+    { path: 'CreateTest', component: CreateTestComponent}
 ];
 
 @NgModule({

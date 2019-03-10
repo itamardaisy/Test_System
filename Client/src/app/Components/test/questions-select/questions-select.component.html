@@ -25,27 +25,30 @@
     <ng-container matColumnDef="Content">
       <th mat-header-cell *matHeaderCellDef>Title </th>
       <td mat-cell *matCellDef="let element">
-        {{element.Content}} 
+        {{element.Content}}
       </td>
     </ng-container>
 
-    <ng-container matColumnDef="Id">
+    <!-- <ng-container matColumnDef="Id">
       <th mat-header-cell *matHeaderCellDef> Id </th>
       <td mat-cell *matCellDef="let element">{{element.Id}} </td>
-    </ng-container>
+    </ng-container> -->
 
     <ng-container matColumnDef="Show">
       <th mat-header-cell *matHeaderCellDef> Show question. </th>
       <td class="myInput" mat-cell *matCellDef="let element">
-        <button mat-raised-button color="primary">Show</button>
+        <button mat-raised-button color="primary">
+          <app-show-question [question]="element"></app-show-question>
+        </button>
+
       </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr style="cursor: pointer" [class.selected]="row.IsSelected"
-      (click)="onSelect(row)" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr style="cursor: pointer" [class.selected]="row.IsSelected" (click)="onSelect(row)" mat-row
+      *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-  
+
 </div>
 
 
