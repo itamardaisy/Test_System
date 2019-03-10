@@ -13,9 +13,7 @@ export class GetQuestionsService {
 
   questions: Question[] = [];
 
-  constructor(private http: HttpClient) {
-
-  }
+  constructor(private http: HttpClient) {}
 
   get(): Observable<any> {
       return this.http.get(`${env.baseUrl}${env.questionUrl}`);

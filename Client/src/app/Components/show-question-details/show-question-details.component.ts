@@ -1,5 +1,7 @@
+import { QuestionService } from 'src/app/Services/Question/question.service';
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { StatusCodesEnum as StatusCode } from '../../Enums/StatusCodesEnum';
 import { Question } from 'src/app/Models/Question';
 
 export interface DialogData {
@@ -16,10 +18,18 @@ export interface DialogData {
 export class ShowQuestionDetailsComponent implements OnInit {
 
     constructor(public dialogRef: MatDialogRef<ShowQuestionDetailsComponent>,
-                @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
+                @Inject(MAT_DIALOG_DATA) public data: DialogData,
+                public questionService: QuestionService) { }
 
     ngOnInit() {
-        alert(this.data.question.Answers[0].IsCorrect);
+        const observable = this.questionService.getAnswers(this.data.question.Id);
+        observable.subscribe(response => {
+            if (response) {
+                console.log(response);
+                this.data.question.Answers = response;
+                alert(this.data.question.Answers);
+            }
+        });
         this.data.isHorizontal = this.data.question.IsHorizontal;
         this.data.isMultiple = this.data.question.IsMultiple;
     }

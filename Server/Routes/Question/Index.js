@@ -39,7 +39,7 @@ router.get('/getQuestions', (req, res) => {
 });
 
 router.get('/getQuestionAnswers', (req, res) => {
-    dbContext.excecuteQueryDB(`SELECT Content FROM Answer WHERE QuestionId = ${req.body.questionId}`, output => {
+    dbContext.excecuteQueryDB(`SELECT * FROM Answer WHERE QuestionId = ${req.body.questionId}`, output => {
         console.log(output);
         return res.status(200).send({ data: output });
     })

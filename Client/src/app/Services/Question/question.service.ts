@@ -1,3 +1,4 @@
+import { Answer } from './../../Models/Answer';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -13,6 +14,10 @@ export class QuestionService {
 
     public getQuestions(): Observable<any> {
         return this.http.get<any>('http://localhost:3000/question/getQuestions');
+    }
+
+    public getAnswers(questionId: number): Observable<Answer[]> {
+        return this.http.post<Answer[]>('http://localhost:3000/question/getQuestions', questionId);
     }
 
     public saveQuestion(question: Question): Observable<any> {
