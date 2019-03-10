@@ -43,7 +43,6 @@ const appRoutes: Routes = [
     { path: 'EditQuestion', component: EditQuestionComponent },
     { path: 'CreateTest', component: CreateTestComponent},
     { path: 'UserTest', component: UserTestComponent },
-    { path: 'TestCreate', component: CreateTestComponent }
 ];
 
 @NgModule({
