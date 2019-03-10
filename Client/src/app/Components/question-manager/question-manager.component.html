@@ -28,7 +28,10 @@
 
         <ng-container matColumnDef="Actions">
             <mat-header-cell *matHeaderCellDef> </mat-header-cell>
-            <mat-cell *matCellDef="let questionEdit"><a>{{questionEdit.Actions}}</a></mat-cell>
+            <mat-cell *matCellDef="let questionEdit">
+                <a>{{questionEdit.Actions}}</a>
+                <a><app-show-question [question]="questionEdit"></app-show-question></a>
+            </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>

@@ -87,6 +87,9 @@ const appRoutes: Routes = [
         )
     ],
     providers: [],
+    entryComponents: [
+        ShowQuestionDetailsComponent
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
