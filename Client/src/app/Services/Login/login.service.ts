@@ -11,7 +11,7 @@ import { environment as env } from '../../../environments/environment';
 export class LoginService {
 
     constructor(private http: HttpClient) { }
-    public login(loginModel: LoginModel): Observable<Admin> {
-        return this.http.post<Admin>(env.baseUrl + env.loginUrl, loginModel);
+    public login(loginModel: LoginModel): Observable<any> {
+        return this.http.post<any>(`${env.baseUrl + env.loginUrl}`, loginModel);
     }
 }

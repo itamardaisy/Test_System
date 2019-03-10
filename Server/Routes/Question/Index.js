@@ -37,4 +37,11 @@ router.get('/getQuestions', (req, res) => {
         return res.status(200).send({ data: output });
     });
 });
+
+router.get('/getQuestionAnswers', (req, res) => {
+    dbContext.excecuteQueryDB(`SELECT Content FROM Answer WHERE QuestionId = ${req.body.questionId}`, output => {
+        console.log(output);
+        return res.status(200).send({ data: output });
+    })
+});
 module.exports = router;

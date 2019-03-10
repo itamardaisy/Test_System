@@ -13,7 +13,7 @@ export class AnswerService {
 
     getAnswers(questionId: number): Observable<Answer[]> {
         // TODO: Change the Url in the env object to the correct url.
-        return this.http.get<Answer[]>(env.baseUrl + env.loginUrl + `/?questionId=${questionId}`);
+        return this.http.get<Answer[]>(`${env.baseUrl + env.loginUrl}/?questionId=${questionId}`);
     }
 
     setAnswers(questionId: number) {

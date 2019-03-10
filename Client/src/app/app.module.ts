@@ -22,7 +22,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatListModule } from '@angular/material/list';
-import {MatRadioModule} from '@angular/material/radio';
+import { MatRadioModule } from '@angular/material/radio';
 import { CreateTestComponent } from './Components/test/create-test/create-test.component';
 import { TableSortingExample } from './Components/test/testfilter/testfilter.component';
 import { MatButtonModule } from '@angular/material/button';
@@ -31,7 +31,6 @@ import { UserTestQuestionComponent } from './Components/user-test-question/user-
 import { AnswerComponent } from './Components/edit-question/answer/answer.component';
 import { ShowUserTestComponent } from './Components/show-user-test/show-user-test.component';
 import { ShowUserTestQuestionComponent } from './Components/show-user-test-question/show-user-test-question.component';
-
 import { ShowQuestionDetailsComponent } from './Components/show-question-details/show-question-details.component';
 import { ShowQuestionButtonComponent } from './Components/show-question-details/show-question-details.component';
 
@@ -42,7 +41,9 @@ const appRoutes: Routes = [
     { path: 'Login', component: LoginComponent },
     { path: 'SelectQuestions', component: QuestionsSelectComponent },
     { path: 'EditQuestion', component: EditQuestionComponent },
-    { path: 'CreateTest', component: CreateTestComponent}
+    { path: 'CreateTest', component: CreateTestComponent},
+    { path: 'UserTest', component: UserTestComponent },
+    { path: 'TestCreate', component: CreateTestComponent }
 ];
 
 @NgModule({
@@ -87,6 +88,9 @@ const appRoutes: Routes = [
         )
     ],
     providers: [],
+    entryComponents: [
+        ShowQuestionDetailsComponent
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
