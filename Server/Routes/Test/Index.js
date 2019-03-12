@@ -10,7 +10,6 @@ const templates = require('../../Models/PredefinedTemplate');
 
 testRouter.get('/getTestsByCategory', (req, res) => {
     console.log("in get catgory")
-    //let body = _.pick(req.body(['categoryId']));
     let body = 1;
     let p = [new sqlParameter('categoryId', sql.Int, body)];
     repository.excecuteProcedureDB('sp_GetTestsByCategory', p, data => {
@@ -28,22 +27,19 @@ testRouter.get('/getQuestionsByCategory', (req, res) => {
 });
 
 testRouter.get('/getPredefinedTemplates', (req, res) => {
-    //res.status(200).json({ message: 'Connected!' });
     console.log('lll');
     res.send(templates);
 });
 
 testRouter.post('/addTest', (req, res) => {
-   // let categoryId = 1; //TODO
     let test = req.body.testDetails;
     let questions = req.body.testQuestions;
-    
+
     repository.procedureCreateTest(test, questions);
     console.log(test, questions);
 })
 
 testRouter.get('/t', (req, res) => {
-    //res.status(200).json({ message: 'Connected!' });
     console.log('in test' + new Date());
 });
 

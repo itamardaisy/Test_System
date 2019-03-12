@@ -144,16 +144,12 @@ export class UserTestComponent implements OnInit {
             },
         ]
     };
-
     selectedIndex = 0;
     isValid = false;
 
     constructor(private userTestService: UserTestService) { }
 
-    ngOnInit() {
-        // this.userTestService.get()
-        // .subscribe
-    }
+    ngOnInit() {}
 
     moveIndex(value) {
         if (this.userTest.questions[this.selectedIndex].answares
@@ -186,7 +182,6 @@ export class UserTestComponent implements OnInit {
         if (!this.submitCheck()) {
             return;
         }
-
         const test = {
             testId: 1,
             userId: 1,

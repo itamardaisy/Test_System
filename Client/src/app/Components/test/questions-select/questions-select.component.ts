@@ -7,53 +7,33 @@ import { MatTableDataSource } from '@angular/material';
 import { getSupportedInputTypes } from '@angular/cdk/platform';
 
 @Component({
-  selector: 'app-questions-select',
-  templateUrl: './questions-select.component.html',
-  styleUrls: ['./questions-select.component.css'],
-  viewProviders: [{ provide: ControlContainer, useExisting: NgForm }]
+    selector: 'app-questions-select',
+    templateUrl: './questions-select.component.html',
+    styleUrls: ['./questions-select.component.css'],
+    viewProviders: [{ provide: ControlContainer, useExisting: NgForm }]
 })
 export class QuestionsSelectComponent implements OnInit {
-  questionsList: MatTableDataSource<Question>;
-  displayedColumns: string[] = ['Content',  'Show'];
+    questionsList: MatTableDataSource<Question>;
+    displayedColumns: string[] = ['Content', 'Show'];
 
-  @Output() selectedQuestions = new EventEmitter();
-  @Input() set questions(value: Question[]) {
-    if (value && value.length > 0) {
-      this.questionsList = new MatTableDataSource(value);
+    @Output() selectedQuestions = new EventEmitter();
+
+    @Input() set questions(value: Question[]) {
+        if (value && value.length > 0) {
+            this.questionsList = new MatTableDataSource(value);
+        }
     }
-  }
 
-  constructor() { }
+    constructor() { }
 
-  ngOnInit() {
-  }
+    ngOnInit() { }
 
-  applyFilter(filterValue: string) {
-    this.questionsList.filter = filterValue.trim().toLowerCase();
-  }
+    applyFilter(filterValue: string) {
+        this.questionsList.filter = filterValue.trim().toLowerCase();
+    }
 
-  onSelect(question: Question) {
-    console.log(question);
-    question.IsSelected = !question.IsSelected;
-
-  }
+    onSelect(question: Question) {
+        console.log(question);
+        question.IsSelected = !question.IsSelected;
+    }
 }
-
-
-
-   // this.questionsService.get()
-  //   .subscribe(data => {
-    //     this.questionsList = new MatTableDataSource(data.data[0]);
-    //   }, err => alert(err));
-
-   // test(event) {
-  //   console.log(event);
-  // }
-
-
-  // onSubmit() {
-  //   let questionsId = this.questionsList.data
-  //     .filter(q => q.IsSelected)
-  //     .map(qu => qu.Id);
-  //   this.selectedQuestions.emit(questionsId);
-  // }

@@ -29,11 +29,6 @@
       </td>
     </ng-container>
 
-    <!-- <ng-container matColumnDef="Id">
-      <th mat-header-cell *matHeaderCellDef> Id </th>
-      <td mat-cell *matCellDef="let element">{{element.Id}} </td>
-    </ng-container> -->
-
     <ng-container matColumnDef="Show">
       <th mat-header-cell *matHeaderCellDef> Show question. </th>
       <td class="myInput" mat-cell *matCellDef="let element">
@@ -50,17 +45,3 @@
   </table>
 
 </div>
-
-
-
-
-<!-- <mat-selection-list #question>
-  <mat-list-option *ngFor="let q of questionsList">
-    <input type="checkbox" name="{{q.Content}}" [(ngModel)]="q.Content">
-    {{q.Content}}
-  </mat-list-option>
-</mat-selection-list>
-
-<p>
-  Options selected: {{question.selectedOptions.selected.length}}
-</p> -->

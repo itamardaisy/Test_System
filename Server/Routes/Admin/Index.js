@@ -5,7 +5,7 @@ const sqlP = require('../../Models/SqlParameter');
 const sql = require('mssql');
 const Admin = require('../../Models/Admin');
 const statusCodes = require('../../Models/ErrorCodesEnum');
-const bcrypt = require('bcrypt');
+    const bcrypt = require('bcrypt');
 var session = require('express-session')
 var crypto = require('crypto');
 

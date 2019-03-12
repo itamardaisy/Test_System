@@ -10,7 +10,7 @@ const user = require('./Routes/User/Index');
 // Middlewares
 app.use(cors());
 app.use(express.json());
-  
+
 app.use('/admin', admin)        // Admin Routes
 app.use('/test', test);         // Test Routes  
 app.use('/question', question)  // Question Routes

@@ -3,7 +3,7 @@ module.exports = {
     user: 'Itamar',
     password: 'qwerty',
     server: 'localhost',
-    database: 'TestingSystemDB',
+    database: 'ReactLoginEx',
     pool: {
         min: 2
     },

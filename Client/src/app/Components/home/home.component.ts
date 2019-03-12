@@ -19,7 +19,6 @@ export class HomeComponent implements OnInit {
     }
 
     changeState(event) {
-        alert(event.target.value);
         localStorage['Study field'] = event.target.value;
     }
 }

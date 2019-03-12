@@ -1,25 +1,22 @@
 <form #userTestForm="ngForm">
-  <div>{{userTestForm.value | json}}</div>
-  <div class="userTestContainer">
-    <h1 style="background-color:cornflowerblue; font-size: 2em">{{userTest.name}}</h1>
-    <div *ngFor="let q of userTest.questions; let i=index">
-      <app-user-test-question [question]="q" [index]="i" *ngIf="i === selectedIndex"></app-user-test-question>
+    <div>{{userTestForm.value | json}}</div>
+    <div class="userTestContainer">
+        <h1 style="background-color:cornflowerblue; font-size: 2em">{{userTest.name}}</h1>
+        <div *ngFor="let q of userTest.questions; let i=index">
+            <app-user-test-question [question]="q" [index]="i" *ngIf="i === selectedIndex"></app-user-test-question>
+        </div>
+        <div class="btnContainer">
+            <button *ngIf="selectedIndex != 0" mat-raised-button color="primary" (click)="moveIndex(-1)">❮❮ Previous
+                question</button>
+            <button *ngIf="selectedIndex < userTest.questions.length - 1" mat-raised-button color="primary"
+                (click)="moveIndex(1)">Next question ❯❯</button>
+            <button type="submit" *ngIf="selectedIndex === userTest.questions.length - 1" mat-raised-button color="warn"
+                (click)="submit(userTestForm)">Submit the test</button>
+        </div>
+        <ol> <b>Quick navigation:</b>
+            <li *ngFor="let q of userTest.questions; let i = index" [ngClass]="q.isAnswered === true? 'answered': ''">
+                <a (click)="goToIndex(i)">{{i + 1}} </a><span *ngIf="!(i === userTest.questions.length - 1)">|</span>
+            </li>
+        </ol>
     </div>
-    <div class="btnContainer">
-      <button *ngIf="selectedIndex != 0" mat-raised-button color="primary" (click)="moveIndex(-1)">❮❮ Previous
-        question</button>
-      <button *ngIf="selectedIndex < userTest.questions.length - 1" mat-raised-button color="primary"
-        (click)="moveIndex(1)">Next question ❯❯</button>
-      <button type="submit" *ngIf="selectedIndex === userTest.questions.length - 1" mat-raised-button color="warn"
-        (click)="submit(userTestForm)">Submit the test</button>
-    </div>
-    <ol> <b>Quick navigation:</b>
-      <li *ngFor="let q of userTest.questions; let i = index" [ngClass]="q.isAnswered === true? 'answered': ''">
-        <a (click)="goToIndex(i)">{{i + 1}} </a><span *ngIf="!(i === userTest.questions.length - 1)">|</span>
-      </li>
-    </ol>
-  </div>
-
 </form>
-<!-- [(class.answered)]="q.isAnswered" -->
-<!-- [disabled]="!isValid -->

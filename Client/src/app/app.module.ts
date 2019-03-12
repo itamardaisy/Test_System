@@ -24,7 +24,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatListModule } from '@angular/material/list';
 import { MatRadioModule } from '@angular/material/radio';
 import { CreateTestComponent } from './Components/test/create-test/create-test.component';
-import { TableSortingExample } from './Components/test/testfilter/testfilter.component';
+import { TableSortingComponent } from './Components/test/testfilter/testfilter.component';
 import { MatButtonModule } from '@angular/material/button';
 import { UserTestComponent } from './Components/user-test/user-test.component';
 import { UserTestQuestionComponent } from './Components/user-test-question/user-test-question.component';
@@ -57,7 +57,7 @@ const appRoutes: Routes = [
         ResetPasswordComponent,
         EditQuestionComponent,
         CreateTestComponent,
-        TableSortingExample,
+        TableSortingComponent,
         UserTestComponent,
         UserTestQuestionComponent,
         AnswerComponent,

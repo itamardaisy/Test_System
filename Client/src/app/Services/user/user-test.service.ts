@@ -5,17 +5,17 @@ import { environment as env } from '../../../environments/environment';
 
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class UserTestService {
 
-  constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) { }
 
-  get(): Observable<any> {
-    return this.http.get(`${env.baseUrl}${env.getUserTestUrl}`);
-  }
+    get(): Observable<any> {
+        return this.http.get(`${env.baseUrl}${env.getUserTestUrl}`);
+    }
 
-  post(test): Observable<any> {
-    return this.http.post(`${env.baseUrl}${env.userTestDoneUrl}`, test);
-  }
+    post(test): Observable<any> {
+        return this.http.post(`${env.baseUrl}${env.userTestDoneUrl}`, test);
+    }
 }

@@ -1,126 +1,107 @@
 <form #testForm="ngForm" (ngSubmit)="Submit(testModel)">
+    <div class="testContainer">
+        <div class=" testDetailsContainer halfPage">
+            <h1>Genral test details</h1>
+            <div>Field of study: <b>development</b></div>
 
-  <!-- <div>{{testForm.value | json}}</div>
-  <div>{{testModel | json}}</div> -->
+            <mat-form-field>
+                <mat-select placeholder="Language" name="Language" required [(ngModel)]="testModel.Language">
+                    <mat-option *ngFor="let language of languages" [value]="language">{{language}}</mat-option>
+                </mat-select>
+            </mat-form-field>
 
+            <mat-form-field>
+                <input matInput placeholder="Test name" name="Name" [(ngModel)]="testModel.Name" required>
+            </mat-form-field>
 
-  <div class="testContainer">
-    <div class=" testDetailsContainer halfPage">
-      <h1>Genral test details</h1>
-      <!-- <div class="tableContainer"> -->
-      <div>Field of study: <b>development</b></div>
+            <mat-form-field>
+                <input matInput placeholder="Passing grade" name="PassingGrade" [(ngModel)]="testModel.PassingGrade"
+                    required>
+            </mat-form-field>
 
-      <mat-form-field>
-        <mat-select placeholder="Language" name="Language" required [(ngModel)]="testModel.Language">
-          <mat-option *ngFor="let language of languages" [value]="language">{{language}}</mat-option>
-        </mat-select>
-      </mat-form-field>
+            <mat-checkbox name="ShowAnswers" [(ngModel)]="testModel.ShowAnswers">Show correct answers after submission
+            </mat-checkbox>
 
-      <mat-form-field>
-        <input matInput placeholder="Test name" name="Name" [(ngModel)]="testModel.Name" required>
-      </mat-form-field>
+            <mat-form-field>
+                <textarea matInput placeholder="Header content" name="HeaderContent"
+                    [(ngModel)]="testModel.HeaderContent" required></textarea>
+            </mat-form-field>
 
-      <mat-form-field>
-        <input matInput placeholder="Passing grade" name="PassingGrade" [(ngModel)]="testModel.PassingGrade" required>
-      </mat-form-field>
+            <mat-form-field>
+                <textarea matInput placeholder="Text success" name="TextSuccess"
+                    [(ngModel)]="testModel.TextSuccess"></textarea>
+            </mat-form-field>
 
-      <mat-checkbox name="ShowAnswers" [(ngModel)]="testModel.ShowAnswers">Show correct answers after submission
-      </mat-checkbox>
+            <mat-form-field>
+                <textarea matInput placeholder="Text failure" name="TextFailure"
+                    [(ngModel)]="testModel.TextFailure"></textarea>
+            </mat-form-field>
 
-      <mat-form-field>
-        <textarea matInput placeholder="Header content" name="HeaderContent" [(ngModel)]="testModel.HeaderContent"
-          required></textarea>
-      </mat-form-field>
+            <mat-form-field>
+                <mat-select placeholder="certificate" name="CertificateURL" [(ngModel)]="testModel.CertificateURL">
+                    <mat-option *ngFor="let c of certificates" [value]="c">{{c}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
 
-      <mat-form-field>
-        <textarea matInput placeholder="Text success" name="TextSuccess" [(ngModel)]="testModel.TextSuccess"></textarea>
-      </mat-form-field>
+        <div class="testDetailsContainer halfPage">
+            <h1>Email delivery upon test completion</h1>
 
-      <mat-form-field>
-        <textarea matInput placeholder="Text failure" name="TextFailure" [(ngModel)]="testModel.TextFailure"></textarea>
-      </mat-form-field>
+            <div class="emeilArea">
+                <div>Current status: <b [ngClass]="email.valid? 'on' : 'off'">{{email.valid? 'on':'off'}}</b></div>
 
-      <mat-form-field>
-        <mat-select placeholder="certificate" name="CertificateURL" [(ngModel)]="testModel.CertificateURL">
-          <mat-option *ngFor="let c of certificates" [value]="c">{{c}}</mat-option>
-        </mat-select>
-      </mat-form-field>
+                <b>Email Delivery Upon Test Completion</b>
+                <div>to torn on email delivery, fill out the mandatory fields in this section</div>
 
-      <!-- </div> -->
+                <mat-form-field>
+                    <input type="email" matInput placeholder="from" name="CreatorEmail"
+                        [(ngModel)]="testModel.CreatorEmail" #email="ngModel" required>
+                </mat-form-field>
+            </div>
+
+            <b class="boundaryLine">Passing the test</b>
+
+            <mat-form-field>
+                <input matInput placeholder="Subject success text" name="SubjectSuccessText"
+                    [(ngModel)]="testModel.SubjectSuccessText">
+            </mat-form-field>
+
+            <mat-form-field>
+                <textarea matInput placeholder="Subject success body" name="SubjectSuccessBody"
+                    [(ngModel)]="testModel.SubjectSuccessBody" #successTextArea></textarea>
+            </mat-form-field>
+
+            <b> Predefined templates - click to copy to clipboard</b>
+
+            <div class="template">
+                <input *ngFor="let i of templates; let ind = index" type="text" (click)="Copy($event, true)"
+                    readonly="readonly" value={{i}} />
+            </div>
+
+            <b class="boundaryLine">Failing the test</b>
+
+            <mat-form-field>
+                <input matInput placeholder="Subject failure text" name="SubjectFailureText"
+                    [(ngModel)]="testModel.SubjectFailureText">
+            </mat-form-field>
+
+            <mat-form-field>
+                <textarea matInput placeholder="Subject failure body" name="SubjectFailureBody"
+                    [(ngModel)]="testModel.SubjectFailureBody" #failureTextArea></textarea>
+            </mat-form-field>
+
+            <b> Predefined templates - click to copy to clipboard</b>
+
+            <div class="template">
+                <input *ngFor="let i of templates; let ind = index" type="text" (click)="Copy($event, false)"
+                    readonly="readonly" value={{i+ind}} #test+ind />
+            </div>
+
+        </div>
     </div>
-
-    <div class="testDetailsContainer halfPage">
-      <h1>Email delivery upon test completion</h1>
-
-      <div class="emeilArea">
-        <div>Current status: <b [ngClass]="email.valid? 'on' : 'off'">{{email.valid? 'on':'off'}}</b></div>
-
-        <b>Email Delivery Upon Test Completion</b>
-        <div>to torn on email delivery, fill out the mandatory fields in this section</div>
-
-        <mat-form-field>
-          <input type="email" matInput placeholder="from" name="CreatorEmail" [(ngModel)]="testModel.CreatorEmail"
-            #email="ngModel" required>
-        </mat-form-field>
-      </div>
-
-      <b class="boundaryLine">Passing the test</b>
-
-      <mat-form-field>
-        <input matInput placeholder="Subject success text" name="SubjectSuccessText"
-          [(ngModel)]="testModel.SubjectSuccessText">
-      </mat-form-field>
-
-      <mat-form-field>
-        <textarea matInput placeholder="Subject success body" name="SubjectSuccessBody"
-          [(ngModel)]="testModel.SubjectSuccessBody" #successTextArea></textarea>
-      </mat-form-field>
-
-      <b> Predefined templates - click to copy to clipboard</b>
-
-      <div class="template">
-        <input *ngFor="let i of templates; let ind = index" type="text" (click)="Copy($event, true)" readonly="readonly"
-          value={{i}} />
-      </div>
-
-      <b class="boundaryLine">Failing the test</b>
-
-      <mat-form-field>                                           
-        <input matInput placeholder="Subject failure text" name="SubjectFailureText"
-          [(ngModel)]="testModel.SubjectFailureText">
-      </mat-form-field>
-
-      <mat-form-field>                                              
-        <textarea matInput placeholder="Subject failure body" name="SubjectFailureBody"
-          [(ngModel)]="testModel.SubjectFailureBody" #failureTextArea></textarea>
-      </mat-form-field>
-
-      <b> Predefined templates - click to copy to clipboard</b>
-
-      <div class="template">
-        <input *ngFor="let i of templates; let ind = index" type="text" (click)="Copy($event, false)"
-          readonly="readonly" value={{i+ind}} #test+ind />
-      </div>
-
+    <div class="testDetailsContainer">
+        <app-questions-select [questions]="testModel.Questions" (selectedQuestions)="getQuestions($event)">
+        </app-questions-select>
     </div>
-  </div>
-  <div class="testDetailsContainer">
-    <app-questions-select [questions]="testModel.Questions" (selectedQuestions)="getQuestions($event)"></app-questions-select>
-  </div>
-  <button type="submit" mat-raised-button color="accent" [disabled]="!testForm.valid">Submit</button>
+    <button type="submit" mat-raised-button color="accent" [disabled]="!testForm.valid">Submit</button>
 </form>
-
-<!-- <div>end</div> -->
-
-
-
-
-<!-- <span>{{email.valid? 'on':'off'}}</span> -->
-<!-- <span *ngIf="email.valid">off</span>
-      <span *ngIf="!email.valid">on</span>
-
-      
-      <span *ngIf="email.valid; else on">off</span>
-      <ng-template #on>
-        <span *ngIf="!email.valid">on</span>
-      </ng-template> -->
